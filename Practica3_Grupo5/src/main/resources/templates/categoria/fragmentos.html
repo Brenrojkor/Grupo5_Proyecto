@@ -1,8 +1,5 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
+
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
@@ -19,17 +16,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                             type="button" 
                             class="btn btn-primary btn-block" 
                             data-bs-toggle="modal" 
-                            data-bs-target="#agregarCategoria">
-                            <i class="fas fa-plus"></i> [[#{{árbol.agregar}]]
+                            data-bs-target="#agregarCategoriaArboles">
+                            <i class="fas fa-plus"></i> [[#{{arbol.agregar}]]
                         </button>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- 2 Fragmento para agregar categoria, es la ventana modal -->
-        <section th:fragment="agregarárbol">
-            <div id="agregarárbol" 
+        <section th:fragment="agregararbol">
+            <div id="agregararbol" 
                  class="modal fade" 
                  tabindex="-1" 
                  aria-labelledby="exampleModalLabel" 
@@ -37,22 +32,22 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 <div class="modal-dialog modal-md">
                     <div class="modal-content">
                         <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title">[[#{árbol.agregar}]]</h5>
+                            <h5 class="modal-title">[[#{arbol.agregar}]]</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div> 
-                        <form th:action="@{/árbol/guardar}" th:object="${árbol}"
+                        <form th:action="@{/arbol/guardar}" th:object="${árbol}"
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="descripcion">[[#{árbol.nombre}]]</label>
+                                    <label for="descripcion">[[#{arbol.nombre}]]</label>
                                     <input type="text" class="form-control" name="nombre" required="true"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="activo">[[#{árbol.activo}]]</label>
+                                    <label for="activo">[[#{arbol.activo}]]</label>
                                     <input class="form-check-input" type="checkbox" name="activo" id="activo"/>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="imagen">[[#{árbol.ruta_imagen}]]</label>
+                                    <label for="imagen">[[#{arbol.ruta_imagen}]]</label>
                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);"/>
                                     <img id="blah" src="#" alt="your image" height="200"/>
                                 </div>
@@ -66,38 +61,37 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
             </div>
         </section>
 
-        <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
-        <section th:fragment="listadoárbol" id="árbol">
+        <section th:fragment="listadoarbol" id="árbol">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
                         <div class="card">
                             <div class="card-header">
-                                <h4>[[#{árbol.listado}]]</h4>
+                                <h4>[[#{arbol.listado}]]</h4>
                             </div>
-                            <div th:if="${árbol != null and !árbol.empty}">
+                            <div th:if="${arbol != null and !arbol.empty}">
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
                                         <tr><th>#</th>
-                                            <th>[[#{árbol.nombre}]]</th>
-                                            <th>[[#{árbol.activo}]]</th>
+                                            <th>[[#{arbol.nombre}]]</th>
+                                            <th>[[#{arbol.activo}]]</th>
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="árbol, contador : ${árbol}">
+                                        <tr th:each="arbol, contador : ${arbol}">
                                             <td>[[${contador.count}]]</td>
-                                            <td>[[${árbol.nombre}]]</td>
-                                            <td th:text="${árbol.activo} ? 'Activa' : 'Inactiva'" />
-                                            <td><a th:href="@{/árbol/eliminar/}+${árbol.id_arbol}"
+                                            <td>[[${arbol.nombre}]]</td>
+                                            <td th:text="${arbol.activo} ? 'Activa' : 'Inactiva'" />
+                                            <td><a th:href="@{/arbol/eliminar/}+${arbol.id_arbol}"
                                                    class="btn btn-danger">
                                                     <i class="fas fa-trash"></i> [[#{accion.eliminar}]]</a>
-                                                <a th:href="@{/árbol/modificar/}+${árbol.id_arbol}"
+                                                <a th:href="@{/árbol/modificar/}+${arbol.id_arbol}"
                                                    class="btn btn-success">
                                                     <i class="fas fa-pencil"></i> [[#{accion.actualizar}]]</a></td></tr>
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="text-center p-2" th:if="${árbol == null or árbol.empty}">
+                            <div class="text-center p-2" th:if="${arbol == null or árbol.empty}">
                                 <span>[[#{lista.vacia}]]</span>
                             </div>
                         </div>
@@ -105,7 +99,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <div class="col-md-3">
                         <div class="card text-center bg-success text-white mb-3">
                             <div class="card-body">
-                                <h3>[[#{árbol.total}]]</h3>
+                                <h3>[[#{arbol.total}]]</h3>
                                 <h4 class="fs-2"><i class="fas fa-users"></i> [[${totalCategorias}]]</h4>
                             </div>
                         </div>
@@ -115,19 +109,20 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
 
         <!-- 4 Fragmento que se utiliza en la página modifca.html -->
-        <section th:fragment="editarárbol">
+        <section th:fragment="editararbol">
             <div class="row">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
                     <form method="POST"
-                          th:action="@{/árbol/guardar}" 
-                          th:object="${árbol}"
+                          th:action="@{/arbol/guardar}" 
+                          th:object="${arbol}"
                           class="was-validated"                          
                           enctype="multipart/form-data">
                         <input type="hidden" name="id_arbol" th:field="*{id_arbol}"/>
                         <input type="hidden" name="ruta_imagen" th:field="*{ruta_imagen}"/>
-                        <input type="hidden" name="nombre" th:field="*{nombre}"/>                       
-                        <section th:replace="~{árbol/fragmentos :: botonesEditar}"/>
+                        <input type="hidden" name="nombre" th:field="*{nombre}"/>
+                        <input type="hidden" name="tipo_flor" th:field="*{tipo_flor}"/>                       
+                        <section th:replace="~{arbol/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
                                 <div class="row">
@@ -138,13 +133,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="descripcion">[[#{árbol.nombre}]]</label>
+                                                    <label for="descripcion">[[#{arbol.nombre}]]</label>
                                                     <input type="text" class="form-control" 
                                                            name="nombre" th:field="*{nombre}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="activo">[[#{árbol.activo}]]</label>
+                                                    <label for="activo">[[#{arbol.activo}]]</label>
                                                     <input class="form-check-input" 
                                                            type="checkbox" 
                                                            name="activo" 
@@ -152,10 +147,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                                            th:field="*{activo}">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="imagen">[[#{árbol.ruta_imagen}]]</label>
+                                                    <label for="imagen">[[#{arbol.ruta_imagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${árbol.ruta_imagen}}" alt="your image" height="200"/>
+                                                    <img id="blah" th:src="@{${arbol.ruta_imagen}}" alt="your image" height="200"/>
                                                 </div>
                                             </div>
                                         </div>
@@ -166,29 +161,72 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 </div>
             </div>
         </section>
-
-        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
-        <section th:fragment="botonesEditar">
-            <div class="container py-4 mb-4 bg-light">
-                <div class="row">
-                    <div class="col-md-4 d-grid">
-                        <a th:href="@{/árbol/listado}" class="btn btn-primary">
-                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-grid">                                
-                        <a th:href="@{/árbol/eliminar/}+${árbol.id_arbol}"
-                           class="btn btn-danger">
-                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
-                        </a>
-                    </div>
-                    <div class="col-md-4 d-grid">
-                        <button type="submit" class="btn btn-success">
-                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
-                        </button>
-                    </div>
-                </div>
+        <h4>[[#{accion.actualizar}]]</h4>
+        </div>
+        <div class="card-body">
+            <div class="mb-3">
+                <label for="descripcion">[[#{arbol.nombre}]]</label>
+                <input type="text" class="form-control" 
+                       name="nombre" th:field="*{nombre}"
+                       required="true">
             </div>
-        </section>
-    </body>
-</html>
+            <div class="mb-3">
+                <label for="tipo_flor">[[#{arbol.tipo_flor}]]</label>
+                <input type="text" class="form-control" 
+                       name="tipo_flor" th:field="*{tipo_flor}"
+                       required="true">
+            </div>
+            <div class="mb-3">
+                <label for="activo">[[#{arbol.activo}]]</label>
+                <input class="form-check-input" 
+                       type="checkbox" 
+                       name="activo" 
+                       id="activo"
+                       th:field="*{activo}">
+            </div>
+            <div class="mb-3">
+                <label for="imagen">[[#{arbol.ruta_imagen}]]</label>
+                <input class="form-control" type="file" name="imagenFile"
+                       onchange="readURL(this);" />
+                <img id="blah" th:src="@{${arbol.ruta_imagen}}" alt="your image" height="200"/>
+            </div>
+            <div class="mb-3">
+                <label for="dureza">[[#{arbol.dureza}]]</label>
+                <select class="form-control" name="dureza" th:field="*{dureza}" required="true">
+                    <option value>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </form>
+                        </div>
+                        </div>
+                        </section>
+
+                        <!-- 5 Fragmento que se utiliza en el fragmento anterior -->
+                        <section th:fragment="botonesEditar">
+                            <div class="container py-4 mb-4 bg-light">
+                                <div class="row">
+                                    <div class="col-md-4 d-grid">
+                                        <a th:href="@{/arbol/listado}" class="btn btn-primary">
+                                            <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 d-grid">                                
+                                        <a th:href="@{/arbol/eliminar/}+${arbol.id_arbol}"
+                                           class="btn btn-danger">
+                                            <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
+                                        </a>
+                                    </div>
+                                    <div class="col-md-4 d-grid">
+                                        <button type="submit" class="btn btn-success">
+                                            <i class="fas fa-check"></i> [[#{accion.guardar}]]
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        </body>
+                        </html>
