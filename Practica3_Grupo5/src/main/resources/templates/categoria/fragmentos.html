@@ -44,8 +44,8 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                               method="POST" class="was-validated" enctype="multipart/form-data">
                             <div class="modal-body">
                                 <div class="mb-3">
-                                    <label for="descripcion">[[#{árbol.descripcion}]]</label>
-                                    <input type="text" class="form-control" name="descripcion" required="true"/>
+                                    <label for="descripcion">[[#{árbol.nombre}]]</label>
+                                    <input type="text" class="form-control" name="nombre" required="true"/>
                                 </div>
                                 <div class="mb-3">
                                     <label for="activo">[[#{árbol.activo}]]</label>
@@ -67,7 +67,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         </section>
 
         <!-- 3 Sección principal para mostrar la informaccion de la entidad categoria -->
-        <section th:fragment="listadoCategorias" id="árbol">
+        <section th:fragment="listadoárbol" id="árbol">
             <div class="container">
                 <div class="row">
                     <div class="col-md-9">
@@ -79,14 +79,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 <table class="table table-striped table-hover">
                                     <thead class="table-dark">
                                         <tr><th>#</th>
-                                            <th>[[#{árbol.descripcion}]]</th>
+                                            <th>[[#{árbol.nombre}]]</th>
                                             <th>[[#{árbol.activo}]]</th>
                                             <th></th></tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="árbol, contador : ${árbol}">
                                             <td>[[${contador.count}]]</td>
-                                            <td>[[${árbol.descripcion}]]</td>
+                                            <td>[[${árbol.nombre}]]</td>
                                             <td th:text="${árbol.activo} ? 'Activa' : 'Inactiva'" />
                                             <td><a th:href="@{/árbol/eliminar/}+${árbol.id_arbol}"
                                                    class="btn btn-danger">
@@ -124,8 +124,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                           th:object="${árbol}"
                           class="was-validated"                          
                           enctype="multipart/form-data">
-                        <input type="hidden" name="idCategoria" th:field="*{id_arbol}"/>
-                        <input type="hidden" name="rutaImagen" th:field="*{ruta_imagen}"/>
+                        <input type="hidden" name="id_arbol" th:field="*{id_arbol}"/>
+                        <input type="hidden" name="ruta_imagen" th:field="*{ruta_imagen}"/>
+                        <input type="hidden" name="nombre" th:field="*{nombre}"/>                       
                         <section th:replace="~{árbol/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
@@ -137,9 +138,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="descripcion">[[#{árbol.descripcion}]]</label>
+                                                    <label for="descripcion">[[#{árbol.nombre}]]</label>
                                                     <input type="text" class="form-control" 
-                                                           name="descripcion" th:field="*{descripcion}"
+                                                           name="nombre" th:field="*{nombre}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
