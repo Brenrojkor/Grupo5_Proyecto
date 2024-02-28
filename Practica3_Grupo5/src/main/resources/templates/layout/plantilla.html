@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
     <head th:fragment="head">
         <title>Arboleda</title>
         <meta charset="UTF-8"/>
@@ -24,7 +25,7 @@
                     </div>
                 </div>
             </nav>
-            <section id="main-header" class="py-2 bs-success-rgb text-white">
+            <section id="main-header" class="py-2 bg-success text-white">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-6">
@@ -35,19 +36,7 @@
             </section>
         </header>
 
-        <!--Lado Izquierdo -->
-        <aside>
-
-
-        </aside>
-
-        <section>
-
-
-        </section>
-
-        <!--Parte final -->
-        <footer th:fragment="footer" class="bs-success-bg-subtle text-white mt-5 p-2">
+        <footer th:fragment="footer" class="bg-info text-white mt-5 p-2">
             <div class="container">
                 <div class="col">
                     <p class="lead text-center">
@@ -56,6 +45,5 @@
                 </div>
             </div>
         </footer>
-
     </body>
 </html>
