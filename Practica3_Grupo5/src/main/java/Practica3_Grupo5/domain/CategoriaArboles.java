@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "árbol")
+@Table(name = "arbol")
 public class CategoriaArboles implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -23,13 +23,12 @@ public class CategoriaArboles implements Serializable {
     private String tipo_flor;
     private String dureza;
     private boolean activo;
-    private String descripcion;
 
     public CategoriaArboles() {
     }
 
     public CategoriaArboles(String categoriaArboles, boolean activo) {
-        this.descripcion = categoriaArboles;
+        this.nombre = categoriaArboles;
         this.activo = activo;
     }
 }
