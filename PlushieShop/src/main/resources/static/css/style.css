@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Montserrat;
+    background: ghostwhite;
+    height: 100vh;
+}
+h1{
+  text-align: center;   
+}
+.formulario {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+.nickname input,
+.clave input {
+    border-radius: 10px;
+    background-color: #f5af5d;
+    padding: 10px; 
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nickname,
+.clave {
+    margin-bottom: 15px;
+}
+
+input[type="button"] {
+    border-radius: 20px;
+    border: 2px solid #000000;
+    padding: 10px 20px; 
+    cursor: pointer;
+}
+
+.centrar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Registro {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+
