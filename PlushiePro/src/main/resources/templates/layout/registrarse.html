@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+<html>
+    <head>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registrarse</title>
+        <link href="../../static/css/style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <header> 
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <img src="images\Logo.png" alt="Logo">
+                    <a href="#">PlushieShop</a>
+                </div>
+            </div>
+        </nav>
+          </header>
+    <body>
+        
+        <div class = "formulario2">
+            <h1>Registrarse</h1>
+            <form method = "post">
+                <div class="nickname">
+                    <label>Ingrese un nombre de usuario: </label>
+                    <input type="text" required>
+                </div> 
+                <div class="clave"> 
+                    <label>Ingrese su contraseña: </label>
+                    <input type="password" required>
+                </div>
+                <div class="location">
+                    <label>Ingrese su direccion:</label>
+                    <input type="direccion" required>
+                </div>
+                <div class="location2">
+                    <label>Ingrese una direccion adicional:</label>
+                    <input type="location2" required>
+                </div>
+                 <div class="city">
+                    <label>Cuidad:</label>
+                    <input type="city" required>
+                </div>
+                
+                <div class="provincias">
+                <label for="inputState" class="provincias">Provincia: </label>
+                <select id="inputState" class="provincias">
+                    <option selected>Choose...</option>
+                    <option>Alajuela</option>
+                    <option>San Jose</option>
+                    <option>Heredia</option>
+                    <option>Cartago</option>
+                    <option>Guanacaste</option>
+                    <option>Puntarenas</option>
+                    <option>Limon</option>
+                </select>
+                </div>
+                
+                <div class="zip">
+                <label for="inputZip" class="form-label">Codigo postal: </label>
+                <input type="text" class="form-control" id="inputZip">
+            </div>
+
+                <div class="centrar-btn">
+                    <input type="button" value="Continuar">
+                </div>
+                <div class="Inicio Sesion">
+                    ¿Ya tienes una cuenta? dale click <a href="#">aquí para iniciar sesion</a>
+
+                </div>
+        </div>
+        </form>
+    </body>
+</html>
+

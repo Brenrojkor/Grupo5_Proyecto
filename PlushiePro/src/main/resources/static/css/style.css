@@ -451,4 +451,60 @@ input[type="button"] {
 /*Fin del login*/
 
 
+/*Registrarse*/
+h1{
+    text-align: center;
+}
 
+.formulario2 {
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+}
+
+.nickname input,
+.clave input,
+.location input,
+.location2 input,
+.city input,
+.provincias,
+.zip input{
+    border-radius: 10px;
+    background-color: #f5af5d;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.nickname,
+.clave,
+.location,
+.location2,
+.city,
+.provincias,
+.zip{
+    margin-bottom: 10px;
+}
+
+input[type="button"] {
+    border-radius: 20px;
+    border: 2px solid #000000;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.centrar-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Inicio Sesion {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/*Fin del registrarse*/
