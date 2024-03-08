@@ -82,3 +82,14 @@ document.addEventListener("mouseup", dragStop);
 carousel.addEventListener("scroll", infiniteScroll);
 wrapper.addEventListener("mouseenter", () => clearTimeout(timeoutId));
 wrapper.addEventListener("mouseleave", autoPlay);
+
+function Toggle2(button){
+    // Obtener el elemento i dentro del botón
+    var icon = button.querySelector('i');
+
+    if (icon.style.color === "red") {
+        icon.style.color = "black";
+    } else {
+        icon.style.color = "red";
+    }
+}

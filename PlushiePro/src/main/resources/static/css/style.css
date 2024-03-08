@@ -282,7 +282,7 @@ nav .navbar .links li .sub-menu li{
 } 
 }
 
-/*Barra de bÃºsqueda*/
+/*Barra de busqueda*/
 .search-box .input-box::before{
   content: '';
   position: absolute;
@@ -450,7 +450,7 @@ input[type="button"] {
 /*Fin del login*/
 
 
-/*Registrarse*/
+/*Registro*/
 h1{
     text-align: center;
 }
@@ -506,7 +506,7 @@ input[type="button"] {
     margin-bottom: 10px;
 }
 
-/*Fin del registrarse*/
+/*Fin del registro*/
 
 
 h1{
@@ -520,9 +520,7 @@ h1{
 }
 
 
-
-
-/*Parte de los productos*/
+/*Sección de los productos*/
 
 .wrapper {
   max-width: 1100px;
@@ -586,18 +584,26 @@ height:200px;
 weight:200px;
   
 }
+ 
+
+.carousel .img {
+  margin-top: 90px;
+   
+}
+
 
 .carousel .card,
 .carousel .img {
   display: flex;
   justify-content: center;
   align-items: center;
+   
 }
 
 
 .carousel .card {
   scroll-snap-align: start;
-  height: 470px;
+  height: 400px;
   list-style: none;
   background: #fff;
   cursor: pointer;
@@ -605,18 +611,26 @@ weight:200px;
   flex-direction: column;
   border-radius: 12px;
   border: 2px solid #000;
+
+  
+  
 }
 
 
 .carousel .card h2 {
-  font-weight: 500;
-  font-size: 1.56rem;
+  font-weight: 600;
+  font-size: 38px;
   margin: 30px 0 5px;
+  padding-right:90px;
+  
 }
 .carousel .card span {
-  color: #6A6D78;
-  font-size: 1.31rem;
+   color: #6A6D78;
+  font-size: 13px;
+  width: 290px; 
 }
+
+
 
 @media screen and (max-width: 900px) {
   .wrapper .carousel {
@@ -631,3 +645,39 @@ weight:200px;
 }
 
 /*Fin de la parte de los productos*/
+
+/*Botón para agregar al carrito*/
+.btns{
+    position: absolute;
+    top: 216px;
+    left: 328px;
+    display: flex;
+}
+
+.btn{
+    background: transparent;
+    border: none;
+    margin: 87px;
+    font-size: 88px;
+    outline: none;
+    color: black;
+  
+}
+
+.btn i:hover{
+    cursor: pointer;
+}
+
+.card button {
+    position: relative;
+    margin-top: 10px; 
+}
+
+.card .btn i {
+  font-size: 50px; 
+  left:100px;
+  top:-40px;
+}
+
+
+
