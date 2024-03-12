@@ -333,10 +333,12 @@ color:black;
 }
 
 .search-bar button{
-width:50px;
+width:60px;
 height:100%;
-background:#f29325;
+background:#d94f04;
 border: none;
+border-bottom-right-radius:5px;
+border-top-right-radius:5px;
 outline:none;
 display:flex;
 justify-content:center;
