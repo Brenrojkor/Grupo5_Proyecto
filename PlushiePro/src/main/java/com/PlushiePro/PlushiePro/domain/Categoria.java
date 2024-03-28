@@ -16,15 +16,14 @@ public class Categoria implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_categoria")
     private Long idCategoria;
-    private String descripcion;
-    private String rutaImagen;
+    private String nombre;
     private boolean activo;
 
     public Categoria() {
     }
 
-    public Categoria(String descripcion, boolean activo) {
-        this.descripcion = descripcion;
+    public Categoria(String nombre, boolean activo) {
+        this.nombre= nombre;
         this.activo = activo;
     }
 
