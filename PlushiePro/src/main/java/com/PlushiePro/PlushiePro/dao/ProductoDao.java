@@ -4,9 +4,10 @@
  */
 package com.PlushiePro.PlushiePro.dao;
 
-import com.PlushiePro.PlushiePro.domain.Categoria;
+import com.PlushiePro.PlushiePro.domain.Producto;
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CategoriaDao extends JpaRepository <Categoria,Long> {
-    
+public interface ProductoDao extends JpaRepository<Producto, Long> {
+
 }

@@ -19,7 +19,7 @@ DEFAULT CHARACTER SET = utf8mb4;
 create table plushieShop.producto (
   id_producto INT NOT NULL AUTO_INCREMENT,
   id_categoria INT NOT NULL,
-  nombre VARCHAR(30) NOT NULL,  
+  nombre VARCHAR(1000) NOT NULL,  
   descripcion VARCHAR(1600) NOT NULL, 
   precio double,
   existencias int,  
