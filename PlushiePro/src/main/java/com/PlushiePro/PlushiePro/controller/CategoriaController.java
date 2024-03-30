@@ -28,7 +28,7 @@ public class CategoriaController {
         model.addAttribute("totalCategorias",categorias.size());
         return "/categoria/listado";
     }
-    
+   
      @GetMapping("/nuevo")
     public String categoriaNuevo(Categoria categoria) {
         return "/categoria/modifica";

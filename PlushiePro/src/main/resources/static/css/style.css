@@ -405,9 +405,12 @@ color:black;
 /*Fin de estilos del segundo navbar*/
 
 /*Login*/
-h1{
+/* Estilos para el título del formulario */
+.formulario h1 {
     text-align: center;
 }
+
+/* Estilos para el contenedor del formulario */
 .formulario {
     position: absolute;
     top: 50%;
@@ -416,8 +419,8 @@ h1{
     width: 400px;
 }
 
-.nickname input,
-.clave input {
+/* Estilos para los campos de entrada de nombre de usuario y contraseña */
+.formulario .form-control {
     border-radius: 10px;
     background-color: #f5af5d;
     padding: 10px;
@@ -425,32 +428,33 @@ h1{
     box-sizing: border-box;
 }
 
-.nickname,
-.clave {
+/* Estilos para los grupos de campos de entrada */
+.formulario .form-group {
     margin-bottom: 15px;
 }
 
-input[type="button"] {
+/* Estilos para el botón de continuar */
+.formulario input[type="button"] {
     border-radius: 20px;
     border: 2px solid #000000;
     padding: 10px 20px;
     cursor: pointer;
 }
 
-.centrar-btn {
+/* Estilos para centrar el botón */
+.formulario .centrar-btn {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.Registro {
+/* Estilos para el enlace de registro */
+.formulario .Registro {
     text-align: center;
     margin-top: 20px;
     margin-bottom: 10px;
 }
-
-/*Fin del login*/
-
+/*fin del login*/
 
 /*Registro*/
 h1{
