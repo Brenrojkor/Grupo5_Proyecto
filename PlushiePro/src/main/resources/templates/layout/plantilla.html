@@ -6,7 +6,7 @@
     <head th:fragment="head">
         <title>PlushieShop</title>
         <meta charset="UTF-8"/>
-        <link th:href="@{css/style.css}" rel="stylesheet" />  
+        <link th:href="@{/css/style.css}" rel="stylesheet" />  
         <!-- Enlace al archivo CSS de boxicons -->
         <link th:href="@{https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css}" rel="stylesheet" />
         <!-- Enlace al archivo CSS de Font Awesome -->
@@ -22,7 +22,7 @@
                 <div class="navbar">
                     <i class='bx bx-menu'></i>
                     <div class="logo">
-                        <img src="images\Logo.png" alt="Logo"/>
+                        <img src="\images\Logo.png" alt="Logo"/>
                         <a th:href="@{/}">PlushieShop</a>
                     </div>
                     <div class="nav-links">
@@ -74,12 +74,12 @@
                     </div>
                     <div>
                         <form action="#" class="search-bar">
-                            <input type="text" placeholder="Buscar">
+                            <input type="text" placeholder="Buscar"/>
                             <button type="submit"><i class='bx bx-search'></i></button>
                         </form>
                     </div>
                     <div class="cart">
-                        <img src="images\carrito.png" alt="Carrito">
+                        <img src="\images\carrito.png" alt="Carrito"/>
                     </div>
                 </div>
             </nav>
