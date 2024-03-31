@@ -11,6 +11,7 @@ USE plushieShop;
 CREATE TABLE plushieShop.categoria (
   id_categoria INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL,
+  tipo VARCHAR(30) NOT NULL,
   activo bool,
   PRIMARY KEY (id_categoria))
 ENGINE = InnoDB
@@ -31,22 +32,22 @@ create table plushieShop.producto (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-INSERT INTO categoria (id_categoria, nombre, activo) VALUES
-    ('1', 'Naruto', true),
-    ('2', 'Dragon Ball', true),
-    ('3', 'One Piece', true),
-    ('4', 'Mario Bros', true),
-    ('5', 'Fnaf', true),
-    ('6', 'Plantas vs Zombies', true),
-    ('7', 'Polar', true),
-    ('8', 'Panda', true),
-    ('9', 'Escandalosos', true),
-    ('10', 'Otros', true),
-    ('11', 'My Melody', true),
-    ('12', 'Cinnamoroll', true),
-    ('13', 'Kuromi', true),
-    ('14', 'Pompompuri', true),
-    ('15', 'Hello Kitty', true);
+INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
+    ('1', 'Naruto', 'Anime', true),
+    ('2', 'Dragon Ball', 'Anime',  true),
+    ('3', 'One Piece', 'Anime', true),
+    ('4', 'Mario Bros','Videojuegos', true),
+    ('5', 'Fnaf', 'Videojuegos', true),
+    ('6', 'Plantas vs Zombies', 'Videojuegos', true),
+    ('7', 'Polar', 'Osos', true),
+    ('8', 'Panda', 'Osos',true),
+    ('9', 'Escandalosos', 'Osos',true),
+    ('10', 'Otros', 'Osos' ,true),
+    ('11', 'My Melody', 'MyMelody',  true),
+    ('12', 'Cinnamoroll', 'MyMelody', true),
+    ('13', 'Kuromi', 'MyMelody', true),
+    ('14', 'Pompompuri', 'MyMelody', true),
+    ('15', 'Hello Kitty', 'MyMelody', true);
     
     INSERT INTO producto (id_producto, id_categoria, nombre, descripcion, precio, existencias, ruta_imagen, activo) VALUES
     ('1', '1', 'Peluche Naruto 25cm', 'Muñeco de peluche de Naruto para niños, juguete coleccionable de anime,  regalo de cumpleaños y navidad, 25cm','18.240','5','https://www.king-jouet.com/fstrz/r/s/images.king-jouet.com/6/gu909093_6.jpg?frz-v=3234', true),
