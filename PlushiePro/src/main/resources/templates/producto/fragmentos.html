@@ -4,118 +4,40 @@
     <head th:replace="~{layout/plantilla :: head}">
         <title>PlushieShop</title>
            <link th:href="@{/css/style.css}" rel="stylesheet" />  
-           <script th:src="@{/js/script.js}" th:defer="defer"></script>
+          <script th:src="@{/js/script.js}" th:defer="defer"></script>
 
     </head>
     <body>
-<!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
-        <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-3">   
-                        <button 
-                            type="button" 
-                            class="btn btn-primary btn-block" 
-                            data-bs-toggle="modal" 
-                            data-bs-target="#agregarProducto">
-                            <i class="fas fa-plus"></i> Agregar
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </section>
 
-        <!-- 2 Fragmento para agregar producto, es la ventana modal -->
-        <section th:fragment="agregarProducto">
-            <div id="agregarProducto" 
-                 class="modal fade" 
-                 tabindex="-1" 
-                 aria-labelledby="exampleModalLabel" 
-                 aria-hidden="true">
-                <div class="modal-dialog modal-md">
-                    <div class="modal-content">
-                        <div class="modal-header bg-info text-white">
-                            <h5 class="modal-title">Agregar</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div> 
-                        <form th:action="@{/producto/guardar}" th:object="${producto}"
-                              method="POST" class="was-validated" enctype="multipart/form-data">
-
-                            <input type="hidden" name="nuevaImagen" value="NO"/>
-                            <div class="modal-body">
-                                <div class="mb-3">
-                                    <label for="idCategoria">Categoria</label>
-                                    <input type="text" id="idCategoria" name="categoria.idCategoria" class="form-control">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="descripcion">Nombre</label>
-                                    <input type="text" class="form-control" name="nombre" required="true"/>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="detalle">Descripcion</label>                                    
-                                    <textarea class="form-control" name="descripcion" rows="3"></textarea>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="precio">Precio</label>                                    
-                                    <input type="number" class="form-control" name="precio" required="true"/>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="existencias">Existencias</label>                                    
-                                    <input type="number" class="form-control" name="existencias" required="true"/>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="imagen">Imagen</label>
-                                    <input class="form-control" type="file" name="imagenFile"
-                                           onchange="readURL(this);" >
-                                        <img id="blah" src="#" alt="your image" height="200"/>
-                                </div>
-
-                                <div class="mb-3">
-                                    <label for="activo">Activo</label>
-                                    <input class="form-check-input" 
-                                           type="checkbox" 
-                                           name="activo" 
-                                           id="activo">
-                                </div>
-                            </div>
-
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit">Guardar</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-         <!-- 3 Sección principal para mostrar la informaccion de la entidad producto -->
+         <!-- Mostrar la informaccion de la entidad producto -->
       <section th:fragment="listadoProductos" id="productos">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div>
                     <div>
-                        <h4>Listado de productos</h4>
+                        <h1>Recomendaciones</h1>
                     </div>
                     <div>
-                        <div class="row">
-                            <div th:if="${productos != null and !productos.empty}" th:each="producto : ${productos}" class="col-md-4">
-                                <div class="card mb-3">
-                                    <img th:src="${producto.rutaImagen}" class="card-img-top" alt="Imagen del producto">
-                                    <div class="card-body">
-                                        <h5 class="card-title" th:text="${producto.nombre}"></h5>
-                                        <p class="card-text" th:text="'Precio: ' + ${#numbers.formatDecimal(producto.precio, 1, 'DEFAULT', 2, 'DEFAULT')}"></p>
-                                        <p class="card-text" th:text="'Categoría: ' + ${producto.categoria.nombre}"></p>
-                                        <div>
-                                            <button onclick="Toggle2(this)" class="btn"><i class="far fa-heart"></i></button>
+                        <div class="wrapper">
+                            <ul class="carousel">
+                                <div th:if="${productos != null and !productos.empty}" th:each="producto : ${productos}">
+                                    <li class="card">
+                                        <div class="img"><img th:src="${producto.rutaImagen}" alt="Imagen del producto"/></div>
+                                        <div class="card-body">
+                                            <h1 class="card-title" th:text="${producto.nombre}"></h1>
+                                            <h2 class="card-text" th:text="'Precio: ' + ${#numbers.formatDecimal(producto.precio, 1, 'DEFAULT', 2, 'DEFAULT')}"></h2>
+                                            <span class="categories" th:text="'Categoría: ' + ${producto.categoria.nombre}"></span>
+                                            <div>
+                                                <button onclick="Toggle2(this)" class="btn"><i class="far fa-heart"></i></button>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </li>
                                 </div>
-                            </div>
+                            </ul>
                         </div>
+
+
                     </div>
                     <div class="text-center p-2" th:if="${productos == null or productos.empty}">
                         <span>No hay productos</span>
