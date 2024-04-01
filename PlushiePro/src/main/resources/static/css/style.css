@@ -405,7 +405,7 @@ color:black;
 /*Fin de estilos del segundo navbar*/
 
 /*Login*/
-/* Estilos para el título del formulario */
+/* Estilos para el tÃ­tulo del formulario */
 .formulario h1 {
     text-align: center;
 }
@@ -419,7 +419,7 @@ color:black;
     width: 400px;
 }
 
-/* Estilos para los campos de entrada de nombre de usuario y contraseña */
+/* Estilos para los campos de entrada de nombre de usuario y contraseÃ±a */
 .formulario .form-control {
     border-radius: 10px;
     background-color: #f5af5d;
@@ -433,7 +433,7 @@ color:black;
     margin-bottom: 15px;
 }
 
-/* Estilos para el botón de continuar */
+/* Estilos para el botÃ³n de continuar */
 .formulario input[type="button"] {
     border-radius: 20px;
     border: 2px solid #000000;
@@ -441,7 +441,7 @@ color:black;
     cursor: pointer;
 }
 
-/* Estilos para centrar el botón */
+/* Estilos para centrar el botÃ³n */
 .formulario .centrar-btn {
     display: flex;
     justify-content: center;
@@ -518,15 +518,16 @@ input[type="button"] {
 h1{
   margin-top: 30px;
   text-align: left;
-  margin-left:40px;
-  font-size: 36px;
+  margin-left:20px;
+  font-size: 27px;
   font-family: 'Poppins', sans-serif;
   font-weight:700;
 
 }
 
 
-/*Sección de los productos*/
+
+/*SecciÃ³n de los productos*/
 
 .wrapper {
   max-width: 1100px;
@@ -625,11 +626,21 @@ weight:200px;
 
 .carousel .card h2 {
   font-weight: 600;
-  font-size: 38px;
+  font-size: 25px;
   margin: 30px 0 5px;
   padding-right:90px;
   
 }
+
+.carousel .card h1 {
+  font-weight: 600;
+  font-size: 25px;
+  margin: 30px 0 5px;
+  margin-top:5px;
+ 
+  
+}
+
 .carousel .card span {
    color: #6A6D78;
   font-size: 13px;
@@ -652,7 +663,7 @@ weight:200px;
 
 /*Fin de la parte de los productos*/
 
-/*Botón para agregar al carrito*/
+/*BotÃ³n para agregar al carrito*/
 .btns{
     position: absolute;
     top: 216px;
@@ -684,8 +695,3 @@ weight:200px;
   left:100px;
   top:-40px;
 }
-
-
-
-
-

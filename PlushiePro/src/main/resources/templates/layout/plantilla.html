@@ -13,6 +13,7 @@
         <link th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css}" rel="stylesheet" />
         <!-- Inclusión del script de Font Awesome -->
         <script th:src="@{https://kit.fontawesome.com/f6dcf461c1.js}" crossorigin="anonymous"></script>
+         <script th:src="@{/js/script.js}" th:defer="defer"></script>
         
     </head>
     <body>
@@ -44,19 +45,19 @@
                                 <a href="#">Videojuegos</a>
                                 <i class='bx bxs-chevron-down js-arrow arrow '></i>
                                 <ul class="js-sub-menu sub-menu">
-                                    <li><a href="MarioBros.html">Mario Bros</a></li>
-                                    <li><a href="Fnaf.html">Five night at Freddy's</a></li>
-                                    <li><a href="Plantas.html">Plantas vs Zombies</a></li>
+                                    <li><a href="#">Mario Bros</a></li>
+                                    <li><a href="#">Five night at Freddy's</a></li>
+                                    <li><a href="#">Plantas vs Zombies</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">Osos</a>
                                 <i class='bx bxs-chevron-down js-arrow arrow '></i>
                                 <ul class="js-sub-menu sub-menu">
-                                    <li><a href="Polar.html">Polar</a></li>
-                                    <li><a href="Panda.html">Panda</a></li>
-                                    <li><a href="Escandalosos.html">Escandalosos</a></li>
-                                    <li><a href="Otros.html">Otros</a></li>
+                                    <li><a href="#">Polar</a></li>
+                                    <li><a href="#">Panda</a></li>
+                                    <li><a href="#">Escandalosos</a></li>
+                                    <li><a href="#">Otros</a></li>
                                 </ul>
                             </li>
                             <li>
@@ -94,6 +95,53 @@
                 </div>
             </nav>
         </header>
+           <section>
+        <article>
+            <h1>Recomendados</h1>
+    <div class="wrapper">
+      <i id="left" class="fa-solid fa-angle-left"></i>
+      <ul class="carousel">
+        <li class="card">
+          <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_880946-MLC69930227264_062023-O.webp" alt="img" draggable="false"></div>
+          <h2>18.240 CRC</h2>
+          <span>Categoría: Cinnamoroll</span>
+           <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
+        </li>
+        <li class="card">
+          <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_886431-MLM42421710992_062020-O.webp" alt="img" draggable="false"></div>
+          <h2>15.000 CRC</h2>
+          <span>Categoría: Super Mario</span>
+           <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
+        </li>
+        <li class="card">
+          <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_738798-MLM74471099245_022024-O.webp" alt="img" draggable="false"></div>
+          <h2>20.000 CRC</h2>
+          <span>Categoría: One Piece</span>
+           <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
+        </li>
+        <li class="card">
+          <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_637447-MLC52070602931_102022-O.webp" alt="img" draggable="false"></div>
+          <h2>17.500 CRC</h2>
+          <span>Categoría: Plantas vs Zombies</span>
+           <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
+        </li>
+        <li class="card">
+          <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_616165-MLM49834632000_052022-O.webp" alt="img" draggable="false"></div>
+          <h2>22.000 CRC</h2>
+          <span>Categoría: Escandalosos</span>
+           <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
+        </li>
+        <li class="card">
+          <div class="img"><img src="https://i.ebayimg.com/images/g/hDUAAOSwJOtlsgQJ/s-l500.png" alt="img" draggable="false"></div>
+          <h2>24.000 CRC</h2>
+          <span>Categoría: Five night at Freddy's</span>
+           <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
+        </li>
+      </ul>
+      <i id="right" class="fa-solid fa-angle-right"></i>
+    </div>
+       </article>
+    </section>
 
             </body>
 </html>

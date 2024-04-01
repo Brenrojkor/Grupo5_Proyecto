@@ -20,6 +20,7 @@
                     </div>
                     <div>
                         <div class="wrapper">
+                            <i id="left" class="fa-solid fa-angle-left"></i>
                             <ul class="carousel">
                                 <div th:if="${productos != null and !productos.empty}" th:each="producto : ${productos}">
                                     <li class="card">
@@ -35,6 +36,7 @@
                                     </li>
                                 </div>
                             </ul>
+                             <i id="right" class="fa-solid fa-angle-right"></i>
                         </div>
 
 
