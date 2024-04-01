@@ -3,10 +3,11 @@
       xmlns:th="http://www.thymeleaf.org">
     <head th:replace="~{layout/plantilla :: head}">
         <title>PlushieShop</title>
+           <link th:href="@{/css/style.css}" rel="stylesheet" />  
+           <script th:src="@{/js/script.js}" th:defer="defer"></script>
+
     </head>
     <body>
- 
-       
 <!-- 1 Sección para crear el boton de agregar... llamará a una ventana modal-->
         <section th:fragment="botonesAgregar" class="py-4 mb-4 bg-light">
             <div class="container">

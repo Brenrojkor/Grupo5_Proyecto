@@ -29,9 +29,11 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
     
     @Override
-    @Transactional(readOnly = true)
-    public Categoria getCategoria(Categoria categoria) {
-        return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
+    public Categoria getCategoriaByTipo(String tipo) {
+        return categoriaDao.findByTipo(tipo); // Suponiendo que tienes un método findByTipo en tu repositorio
     }
+    
+    
+    
     
 }

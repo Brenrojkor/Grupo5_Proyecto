@@ -22,6 +22,7 @@ public class Categoria implements Serializable {
     @Column(name="id_categoria")
     private Long idCategoria;
     private String nombre;
+    private String tipo;
     private boolean activo;
     
      @OneToMany
@@ -32,7 +33,7 @@ public class Categoria implements Serializable {
     }
 
     public Categoria(String categoria, boolean activo) {
-        this.nombre = categoria;
+        this.tipo = categoria;
         this.activo = activo;
     }
 }
