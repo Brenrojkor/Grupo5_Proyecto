@@ -28,10 +28,7 @@ public class CategoriaServiceImpl implements CategoriaService {
         return lista;
     }
     
-    @Override
-    public Categoria getCategoriaByTipo(String tipo) {
-        return categoriaDao.findByTipo(tipo); // Suponiendo que tienes un método findByTipo en tu repositorio
-    }
+
     
     
     

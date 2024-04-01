@@ -12,7 +12,6 @@ public interface CategoriaService {
     // Se obtiene un listado de categorias en un List
     public List<Categoria> getCategorias(boolean activos);
     
-     // Se obtiene un Categoria, a partir del tipo de un categoria
-    public Categoria getCategoriaByTipo(String tipo);
+
  
 }

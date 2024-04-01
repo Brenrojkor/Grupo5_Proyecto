@@ -26,7 +26,6 @@
                                     <li class="card">
                                         <div class="img"><img th:src="${producto.rutaImagen}" alt="Imagen del producto"/></div>
                                         <div class="card-body">
-                                            <h1 class="card-title" th:text="${producto.nombre}"></h1>
                                             <h2 class="card-text" th:text="'Precio: ' + ${#numbers.formatDecimal(producto.precio, 1, 'DEFAULT', 2, 'DEFAULT')}"></h2>
                                             <span class="categories" th:text="'Categoría: ' + ${producto.categoria.nombre}"></span>
                                             <div>
