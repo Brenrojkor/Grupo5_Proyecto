@@ -1,45 +1,35 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-<html>
-    <head>
-
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login</title>
-        <link href="../../static/css/style.css" rel="stylesheet" type="text/css"/>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>PlushieShop</title>        
     </head>
-    <header> 
-        <nav>
-            <div class="navbar">
-                <div class="logo">
-                    <img src="images\Logo.png" alt="Logo">
-                    <a href="#">PlushieShop</a>
-                </div>
-            </div>
-        </nav>
-          </header>
     <body>
-
         <div class = "formulario">
+            <nav>
+                <div class="navbar">
+                    <div class="logo">
+                        <img src="images\Logo.png" alt="Logo"/>
+                        <a th:href="@{/}">PlushieShop</a>
+                    </div>
+                </div>
+            </nav>
             <h1>Inicio de Sesión</h1>
             <form method = "post">
                 <div class="form-group row my-3">
-                    <label class="col-md-5 my-auto" for="username"><i class="fas fa-user-lock"></i>[[#{login.username}]]:</label>
+                    <label class="col-md-5 my-auto" for="username">Nombre de usuario</label>
                     <div class="col-md-7 my-auto">
                         <input class="form-control" type="text" name="username" id="username"/></div></div>
                 <div class="form-group row my-3">
-                    <label class="col-md-5 my-auto" for="password"><i class="fas fa-key"></i>[[#{login.password}]]</label>
+                    <label class="col-md-5 my-auto" for="password">Contraseña</label>
                     <div class="col-md-7 my-auto"><input class="form-control" type="password" name="password" id="password"/></div></div>
-                    <div class="centrar-btn">
-                        <input type="button" value="Continuar" id="continuarBtn">
-                        
-                    </div>
+                <div class="centrar-btn">
+                    <input type="button" value="Continuar" id="continuarBtn"/>
 
-                    <div class="Registro">
+                </div>
+
+                <div class="Registro">
                     ¿No tienes una cuenta? dale click <a href="#">aquí para registrarte</a>
 
                 </div>

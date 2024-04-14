@@ -24,13 +24,42 @@ create table plushieShop.producto (
   descripcion VARCHAR(1600) NOT NULL, 
   precio double,
   existencias int,  
-  ruta_imagen varchar(1024),
+  ruta_imagen varchar(2048),
   activo bool,
   PRIMARY KEY (id_producto),
   foreign key fk_producto_caregoria (id_categoria) references categoria(id_categoria)  
 )
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
+
+CREATE TABLE plushieShop.usuario (
+  id_usuario INT NOT NULL AUTO_INCREMENT,
+  username varchar(20) NOT NULL,
+  password varchar(512) NOT NULL,
+  nombre VARCHAR(20) NOT NULL,
+  apellidos VARCHAR(30) NOT NULL,
+  correo VARCHAR(25) NULL,
+  telefono VARCHAR(15) NULL,
+  activo boolean,
+  PRIMARY KEY (`id_usuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+create table plushieShop.rol (
+  id_rol INT NOT NULL AUTO_INCREMENT,
+  nombre varchar(20),
+  id_usuario int,
+  PRIMARY KEY (id_rol),
+  foreign key fk_rol_usuario (id_usuario) references usuario(id_usuario)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+INSERT INTO plushieShop.usuario (id_usuario, username,password,nombre, apellidos, correo, telefono,activo) VALUES 
+(1,'admin1','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','Juan', 'Castro Mora',    'jcastro@gmail.com','5456-8789', true),
+(2,'vendedor1','$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi','Rebeca',  'Contreras Mora', 'acontreras@gmail.com', '5456-8789',true),
+(3,'user1','$2a$10$koGR7eS22Pv5KdaVJKDcge04ZB53iMiw76.UjHPY.XyVYlYqXnPbO','Pedro', 'Mena Loria',     'lmena@gmail.com',      '7898-8936',true);
+
 
 INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('1', 'Naruto', 'Anime', true),
@@ -110,3 +139,8 @@ INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('58','13', 'Peluche de Hello Kitty (Vestido y zapatillas)', 'Muñeco de peluche de Hello Kitty con un vestido rosado y zapatillas moradas, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','17.500','21','https://th.bing.com/th/id/R.166a678f1af4a3c72810b601f97886ce?rik=LLnZeAWQaQ3ZDA&pid=ImgRaw&r=0', true),
     ('59','13', 'Peluche de Hello Kitty (Enamorada)', 'Muñeco de peluche de Hello Kitty con vestido rosa y destellos en los ojos, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','16.000','21','https://th.bing.com/th/id/R.d087759c84b570e9264ee0482d1fee10?rik=pmyj40Sx92kNaA&riu=http%3a%2f%2fwww.sanrio.com%2fcdn%2fshop%2ffiles%2fzz-2309756237_KT_--1_2000x.jpg%3fv%3d1695702500&ehk=Ee4jyxm%2bzL4E2GPshJIEOpT9TnadKGQ0HgT3FBd3KrU%3d&risl=&pid=ImgRaw&r=0', true),
     ('60','13', 'Peluche de Hello Kitty (Pijama)', 'Muñeco de peluche de Hello Kitty con un pijama rosita, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','10.000','21','https://i.pinimg.com/originals/54/f6/02/54f602190af0d8185043267a21ded238.jpg', true);
+    
+    insert into plushieShop.rol (id_rol, nombre, id_usuario) values
+ (1,'ROLE_ADMIN',1), (2,'ROLE_VENDEDOR',1), (3,'ROLE_USER',1),
+ (4,'ROLE_VENDEDOR',2), (5,'ROLE_USER',2),
+ (6,'ROLE_USER',3);

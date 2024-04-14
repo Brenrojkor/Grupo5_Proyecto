@@ -86,8 +86,8 @@
             </nav>
             <nav class="navbar-second flex">
                 <div class="right flex">
-                    <div class="login">
-                        <a href="login.html">Iniciar sesión</a>
+                    <div class="login" sec:authorize="!isAuthenticated()">
+                        <a th:href="@{/login}">Iniciar sesión</a>
                     </div>
                     <div class="register">
                         <a href="Registrarse.html">Registrarse</a>
@@ -103,37 +103,37 @@
       <ul class="carousel">
         <li class="card">
           <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_880946-MLC69930227264_062023-O.webp" alt="img" draggable="false"></div>
-          <h2>18.240 CRC</h2>
+          <h2>₡18.240</h2>
           <span>Categoría: Cinnamoroll</span>
            <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
         </li>
         <li class="card">
           <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_886431-MLM42421710992_062020-O.webp" alt="img" draggable="false"></div>
-          <h2>15.000 CRC</h2>
+          <h2>₡15.000</h2>
           <span>Categoría: Super Mario</span>
            <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
         </li>
         <li class="card">
           <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_738798-MLM74471099245_022024-O.webp" alt="img" draggable="false"></div>
-          <h2>20.000 CRC</h2>
+          <h2>₡20.000 </h2>
           <span>Categoría: One Piece</span>
            <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
         </li>
         <li class="card">
           <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_637447-MLC52070602931_102022-O.webp" alt="img" draggable="false"></div>
-          <h2>17.500 CRC</h2>
+          <h2>₡17.500 </h2>
           <span>Categoría: Plantas vs Zombies</span>
            <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
         </li>
         <li class="card">
           <div class="img"><img src="https://http2.mlstatic.com/D_NQ_NP_616165-MLM49834632000_052022-O.webp" alt="img" draggable="false"></div>
-          <h2>22.000 CRC</h2>
+          <h2>₡22.000 </h2>
           <span>Categoría: Escandalosos</span>
            <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
         </li>
         <li class="card">
           <div class="img"><img src="https://i.ebayimg.com/images/g/hDUAAOSwJOtlsgQJ/s-l500.png" alt="img" draggable="false"></div>
-          <h2>24.000 CRC</h2>
+          <h2>₡24.000 </h2>
           <span>Categoría: Five night at Freddy's</span>
            <div> <Button onclick="Toggle2(this)" id="btnh2_1" class="btn"><i class="far fa-heart"></i></Button></div>
         </li>
