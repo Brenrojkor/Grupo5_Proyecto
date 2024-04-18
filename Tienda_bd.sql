@@ -1,5 +1,5 @@
 
--- Crear la base de datos para la tienda
+--- Crear la base de datos para la tienda
 DROP DATABASE IF EXISTS plushieShop;
 DROP USER IF EXISTS grupo5;
 CREATE DATABASE IF NOT EXISTS plushieShop;
