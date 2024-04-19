@@ -84,19 +84,36 @@
                     </div>
                 </div>
             </nav>
-            <nav class="navbar-second flex">
-                <div class="right flex">
-                    <div class="login" sec:authorize="!isAuthenticated()">
-                        <a th:href="@{/login}">Iniciar sesión</a>
-                    </div>
-                    <div class="register">
-                        <a href="Registrarse.html">Registrarse</a>
-                    </div>
+
+<nav class="navbar-second flex">
+    <div class="right flex">
+        <ul>
+            <li sec:authorize="isAuthenticated()">
+                <a th:href="@{/perfil}">Mi cuenta</a>
+            </li>
+            <li class="login" sec:authorize="!isAuthenticated()">
+                <a th:href="@{/login}">Iniciar sesión</a>
+            </li>
+            <li sec:authorize="isAuthenticated()">
+                <form method="post" th:action="@{/logout}">
+                    <button class="register">Cerrar sesión</button>
+                </form>
+            </li>
+            <li>
+                <div class="register" sec:authorize="!isAuthenticated()">
+                    <a th:href="@{/registro}">Registrarse</a>
                 </div>
-            </nav>
+            </li>
+        </ul>
+    </div>
+</nav>
+
         </header>
-           <section>
-        <article>
+
+
+
+        <section>
+            <article>
             <h1>Recomendados</h1>
     <div class="wrapper">
       <i id="left" class="fa-solid fa-angle-left"></i>
