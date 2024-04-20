@@ -82,7 +82,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/producto/listado",
                         "/hotel/listado",
                         "/usuario/listado"
-                ).hasAnyRole("ADMIN", "VENDEDOR")
+                ).hasAnyRole("ADMIN", "USER")
                 .requestMatchers("/facturar/carrito")
                 .hasRole("USER")
                 )
@@ -100,26 +100,4 @@ public class ProjectConfig implements WebMvcConfigurer {
         build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
 
     }
-    /* El siguiente método se utiliza para completar la clase no es 
-    realmente funcional, la próxima semana se reemplaza con usuarios de BD */
-//    @Bean
-//    public UserDetailsService users() {
-//        UserDetails admin = User.builder()
-//                .username("juan")
-//                .password("{noop}123")
-//                .roles("USER", "VENDEDOR", "ADMIN")
-//                .build();
-//        UserDetails sales = User.builder()
-//                .username("rebeca")
-//                .password("{noop}456")
-//                .roles("USER", "VENDEDOR")
-//                .build();
-//        UserDetails user = User.builder()
-//                .username("pedro")
-//                .password("{noop}789")
-//                .roles("USER")
-//                .build();
-//        return new InMemoryUserDetailsManager(user, sales, admin);
-//    }
-    
 }

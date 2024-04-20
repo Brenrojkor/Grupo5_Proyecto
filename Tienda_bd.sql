@@ -1,3 +1,4 @@
+
 -- Crear la base de datos para la tienda
 DROP DATABASE IF EXISTS plushieShop;
 DROP USER IF EXISTS grupo5;
@@ -45,21 +46,30 @@ CREATE TABLE plushieShop.usuario (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-create table plushieShop.rol (
-  id_rol INT NOT NULL AUTO_INCREMENT,
-  nombre varchar(20),
-  id_usuario int,
-  PRIMARY KEY (id_rol),
-  foreign key fk_rol_usuario (id_usuario) references usuario(id_usuario)
-)
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
+DROP TABLE IF EXISTS roles;
+CREATE TABLE roles (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(20) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO plushieShop.usuario (id_usuario, username,password,nombre, apellidos, correo, telefono,activo) VALUES 
-(1,'admin1','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','Juan', 'Castro Mora',    'jcastro@gmail.com','5456-8789', true),
-(2,'vendedor1','$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi','Rebeca',  'Contreras Mora', 'acontreras@gmail.com', '5456-8789',true),
-(3,'user1','$2a$10$koGR7eS22Pv5KdaVJKDcge04ZB53iMiw76.UjHPY.XyVYlYqXnPbO','Pedro', 'Mena Loria',     'lmena@gmail.com',      '7898-8936',true);
-
+DROP TABLE IF EXISTS usuario;
+CREATE TABLE usuario (
+  id int NOT NULL AUTO_INCREMENT,
+  nombre varchar(100) NOT NULL,
+  apellido varchar(100) NOT NULL,
+  correo varchar(100) NOT NULL,
+  direccion varchar(20) NOT NULL,
+  username varchar(50) NOT NULL,
+  password varchar(100) NOT NULL,
+  tarjeta varchar(16)  NOT NULL,
+  pin varchar(4) NOT NULL,
+  fecha DATE NOT NULL,
+  id_rol int DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY id_rol (id_rol),
+  CONSTRAINT cliente_ibfk_1 FOREIGN KEY (id_rol) REFERENCES roles (id)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('1', 'Naruto', 'Anime', true),
@@ -140,7 +150,16 @@ INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('59','13', 'Peluche de Hello Kitty (Enamorada)', 'Muñeco de peluche de Hello Kitty con vestido rosa y destellos en los ojos, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','16.000','21','https://th.bing.com/th/id/R.d087759c84b570e9264ee0482d1fee10?rik=pmyj40Sx92kNaA&riu=http%3a%2f%2fwww.sanrio.com%2fcdn%2fshop%2ffiles%2fzz-2309756237_KT_--1_2000x.jpg%3fv%3d1695702500&ehk=Ee4jyxm%2bzL4E2GPshJIEOpT9TnadKGQ0HgT3FBd3KrU%3d&risl=&pid=ImgRaw&r=0', true),
     ('60','13', 'Peluche de Hello Kitty (Pijama)', 'Muñeco de peluche de Hello Kitty con un pijama rosita, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','10.000','21','https://i.pinimg.com/originals/54/f6/02/54f602190af0d8185043267a21ded238.jpg', true);
     
-    insert into plushieShop.rol (id_rol, nombre, id_usuario) values
- (1,'ROLE_ADMIN',1), (2,'ROLE_VENDEDOR',1), (3,'ROLE_USER',1),
- (4,'ROLE_VENDEDOR',2), (5,'ROLE_USER',2),
- (6,'ROLE_USER',3);
+ 
+ 
+ LOCK TABLES usuario WRITE;
+INSERT INTO usuario VALUES
+ (1,'Juan','Pérez','juan@example.com','Heredia Centro','juan_perez','$2a$12$04CrX/liDFv9De2pwewjH.V54GWW.4aa/LrZJwetwXn5otlGFPv7.','1111-1111','1234','2030-04-15',2),
+ (2,'María','García','maria@example.com','Llanos del Sol','maria_garcia','$2a$12$Iaz69g9rD9tzKO0kaB.V/.UkwIRHMPr9nPU1kCM7jc.9.wkRrx7Yi','2222-2222','5678','2028-04-15',2),
+ (3,'Carlos','López','carlos@example.com','Calle Sánchez','carlos_lopez','$2a$12$stCHKC9z1UJs3rDa2kisfucZnHTXruTuNJwsOILv5bzLOMdc9cRkG','3333-3333','9101','2029-04-15',2),
+ (4,'Admin','Admin','admin@example.com','La Aurora','admin','$2a$12$mwkEba3Ge19v4g1dIN3pmuT2oDVyd51NWDHpquHq4wdVeesbcVBBC','4444-4444','1314','2032-04-15',1);
+UNLOCK TABLES;
+ 
+ LOCK TABLES roles WRITE;
+INSERT INTO roles VALUES (1,'ROLE_ADMIN'),(2,'ROLE_USER');
+UNLOCK TABLES;

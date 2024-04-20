@@ -9,13 +9,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 import javax.validation.constraints.NotEmpty;
 import lombok.Data;
 
 @Entity
 @Data
-@Table(name ="cliente")
+@Table(name ="usuario")
 public class Usuario implements Serializable{
     private static final long serialVersionUID = 1L;
     
@@ -29,14 +30,20 @@ public class Usuario implements Serializable{
     private String apellidos;
     @Column(name = "correo")
     private String correo;
-    @Column(name = "telefono")
-    private String telefono;
-    @Column(name = "nombre_usuario")
+    @Column(name = "direccion")
+    private String direccion;
+    @Column(name = "username")
     @NotEmpty
     private String username;
-    @Column(name = "contrasena")
+    @Column(name = "password")
     @NotEmpty
     private String password;
+    @Column(name = "tarjeta")
+    private String tarjeta;
+     @Column(name = "pin")
+    private String pin;
+    @Column(name = "fecha")
+    private Date fecha;
     @Column(name = "id_rol")
     private int rol;
       

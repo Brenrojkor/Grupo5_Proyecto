@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.PlushiePro.PlushiePro.domain.Usuario;
 import com.PlushiePro.PlushiePro.service.UsuarioService;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 @Controller
 @RequestMapping("/usuario")
@@ -18,13 +20,14 @@ public class UsuarioController {
      @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/listado")
-    public String listado(Model model) {
-        var usuarios = usuarioService.getUsuarios();
-        model.addAttribute("usuarios", usuarios);
-        model.addAttribute("totalUsuarios", usuarios.size());
-        return "/usuario/listado";
-    }
+   @GetMapping("/listado")
+public String listado(Model model) {
+    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+    String username = authentication.getName();
+    Usuario usuario = usuarioService.getUsuarioPorUsername(username);
+    model.addAttribute("usuario", usuario);
+    return "/usuario/listado";
+}
 
     @GetMapping("/nuevo")
     public String usuarioNuevo(Usuario usuario) {
