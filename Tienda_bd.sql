@@ -9,7 +9,8 @@ FLUSH PRIVILEGES;
 USE plushieShop;
 
 /* la tabla de categoria contiene categorias de peluches*/
-CREATE TABLE plushieShop.categoria (
+DROP TABLE IF EXISTS categoria;
+CREATE TABLE categoria (
   id_categoria INT NOT NULL AUTO_INCREMENT,
   nombre VARCHAR(30) NOT NULL,
   tipo VARCHAR(30) NOT NULL,
@@ -18,7 +19,8 @@ CREATE TABLE plushieShop.categoria (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-create table plushieShop.producto (
+DROP TABLE IF EXISTS producto;
+CREATE TABLE producto (
   id_producto INT NOT NULL AUTO_INCREMENT,
   id_categoria INT NOT NULL,
   nombre VARCHAR(1000) NOT NULL,  
@@ -33,19 +35,6 @@ create table plushieShop.producto (
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE plushieShop.usuario (
-  id_usuario INT NOT NULL AUTO_INCREMENT,
-  username varchar(20) NOT NULL,
-  password varchar(512) NOT NULL,
-  nombre VARCHAR(20) NOT NULL,
-  apellidos VARCHAR(30) NOT NULL,
-  correo VARCHAR(25) NULL,
-  telefono VARCHAR(15) NULL,
-  activo boolean,
-  PRIMARY KEY (`id_usuario`))
-ENGINE = InnoDB
-DEFAULT CHARACTER SET = utf8mb4;
-
 DROP TABLE IF EXISTS roles;
 CREATE TABLE roles (
   id int NOT NULL AUTO_INCREMENT,
@@ -53,9 +42,10 @@ CREATE TABLE roles (
   PRIMARY KEY (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+
 DROP TABLE IF EXISTS usuario;
 CREATE TABLE usuario (
-  id int NOT NULL AUTO_INCREMENT,
+  id_usuario int NOT NULL AUTO_INCREMENT,
   nombre varchar(100) NOT NULL,
   apellido varchar(100) NOT NULL,
   correo varchar(100) NOT NULL,
@@ -66,10 +56,39 @@ CREATE TABLE usuario (
   pin varchar(4) NOT NULL,
   fecha DATE NOT NULL,
   id_rol int DEFAULT NULL,
-  PRIMARY KEY (id),
+  PRIMARY KEY (id_usuario),
   KEY id_rol (id_rol),
-  CONSTRAINT cliente_ibfk_1 FOREIGN KEY (id_rol) REFERENCES roles (id)
+  CONSTRAINT usuario_ibfk_1 FOREIGN KEY (id_rol) REFERENCES roles (id)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+DROP TABLE IF EXISTS factura;
+CREATE TABLE factura (
+  id_factura INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULL,
+  fecha date,  
+  total double,
+  estado int,
+  PRIMARY KEY (id_factura),
+  foreign key fk_factura_usuario (id_usuario) references usuario(id_usuario)  
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+DROP TABLE IF EXISTS venta;
+CREATE TABLE venta (
+  id_venta INT NOT NULL AUTO_INCREMENT,
+  id_factura INT NOT NULL,
+  id_producto INT NOT NULL,
+  precio double, 
+  cantidad int,
+  PRIMARY KEY (id_venta),
+  foreign key fk_ventas_factura (id_factura) references factura(id_factura),
+  foreign key fk_ventas_producto (id_producto) references producto(id_producto) 
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
 
 INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('1', 'Naruto', 'Anime', true),
@@ -119,17 +138,17 @@ INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('28','6', 'Peluche de Girasol', 'Muñeco de peluche de Girasol, juguete coleccionable del videojuego, regalo de cumpleaños y navidad, 30cm','10.000','3','https://ae01.alicdn.com/kf/Hed5f799b4b9b4af79c6e9c0fccb57374Q.jpg_640x640Q90.jpg_.webp', true),
     ('29','6', 'Peluche de Cactus', 'Muñeco de peluche de Cactus, juguete coleccionable del videojuego, regalo de cumpleaños y navidad, 30cm','18.500','6','https://i5.walmartimages.com.mx/mg/gm/3pp/asr/0e016bc4-0e5d-45a2-b784-881b3940eee0.fed2792022692735d3825e84dee08d47.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF', true),
     ('30','6', 'Peluche de Jalapeño', 'Muñeco de peluche de Jalapeño, juguete coleccionable del videojuego, regalo de cumpleaños y navidad, 30cm','21.000','5','https://i5.walmartimages.com.mx/mg/gm/3pp/asr/1a2d85d8-3187-4660-b408-596d3c2a569d.eabb450b9d9854ad38f4be21e574af1c.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF', true),  
-	('31','11', 'Peluche de MyMelody (Cinnamoroll con pijama)', 'Muñeco de peluche de MyMelody Cinnamoroll con un pijama azul, juguete coleccionable de MyMelody, regalo de cumpleaños y navidad, 20cm','18.240','20','https://http2.mlstatic.com/D_NQ_NP_880946-MLC69930227264_062023-O.webp', true),
-    ('32','11', 'Peluche de MyMelody (Kuromi traje original)', 'Muñeco de peluche de MyMelody Kuromy, juguete coleccionable de MyMelody, regalo de cumpleaños y navidad, 15cm','16.000','10','https://i.pinimg.com/736x/79/6a/a6/796aa657a7f88e9f109b52b94d43af4e.jpg', true),
-	('33','11', 'Peluche de MyMelody (Pompompuri)', 'Muñeco de peluche de Pompompuri, juguete coleccionable de Pompompuri, regalo de cumpleaños y navidad, 22cm','10.000','21','https://th.bing.com/th/id/OIP.5oZXkZBgH9VAhY4uHe8eMwHaHa?rs=1&pid=ImgDetMain', true),
-	('34','11', 'Peluche de MyMelody (Hello Kitty) ', 'Muñeco de peluche de MyMelody Hello Kitty, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','17.500','21','https://th.bing.com/th/id/R.166a678f1af4a3c72810b601f97886ce?rik=LLnZeAWQaQ3ZDA&pid=ImgRaw&r=0', true),
-	('35','11', 'Peluche de MyMelody (Pompompuri (Gato))', 'Muñeco de peluche de MyMelody Pompompuri con un traje de Gato, juguete coleccionable de Pompompuri, regalo de cumpleaños y navidad, 22cm','16.500','21','https://i.pinimg.com/736x/10/9d/40/109d407ab6eed35663a8bccfce571613.jpg', true),
-	('36','11', 'Peluche de MyMelody (Cinnamoroll traje GODIVA 2023)', 'Muñeco de peluche de MyMelody Cinnamoroll con traje de GODIVA 2023, juguete coleccionable de MyMelody, regalo de cumpleaños y navidad, 22cm','18.00','10','https://happycruise.jp/wp-content/uploads/2023/01/valentine2023-sanrio-godiva12.jpg', true),
+	('31','11', 'Cinnamoroll con pijama', 'Muñeco de peluche de MyMelody Cinnamoroll con un pijama azul, juguete coleccionable de MyMelody, regalo de cumpleaños y navidad, 20cm','18.240','20','https://http2.mlstatic.com/D_NQ_NP_880946-MLC69930227264_062023-O.webp', true),
+    ('32','11', 'Kuromi traje original', 'Muñeco de peluche de MyMelody Kuromy, juguete coleccionable de MyMelody, regalo de cumpleaños y navidad, 15cm','16.000','10','https://i.pinimg.com/736x/79/6a/a6/796aa657a7f88e9f109b52b94d43af4e.jpg', true),
+	('33','11', 'Pompompuri', 'Muñeco de peluche de Pompompuri, juguete coleccionable de Pompompuri, regalo de cumpleaños y navidad, 22cm','10.000','21','https://th.bing.com/th/id/OIP.5oZXkZBgH9VAhY4uHe8eMwHaHa?rs=1&pid=ImgDetMain', true),
+	('34','11', 'Hello Kitty ', 'Muñeco de peluche de MyMelody Hello Kitty, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','17.500','21','https://th.bing.com/th/id/R.166a678f1af4a3c72810b601f97886ce?rik=LLnZeAWQaQ3ZDA&pid=ImgRaw&r=0', true),
+	('35','11', 'Pompompuri (Gato)', 'Muñeco de peluche de MyMelody Pompompuri con un traje de Gato, juguete coleccionable de Pompompuri, regalo de cumpleaños y navidad, 22cm','16.500','21','https://i.pinimg.com/736x/10/9d/40/109d407ab6eed35663a8bccfce571613.jpg', true),
+	('36','11', 'Cinnamoroll traje GODIVA 2023', 'Muñeco de peluche de MyMelody Cinnamoroll con traje de GODIVA 2023, juguete coleccionable de MyMelody, regalo de cumpleaños y navidad, 22cm','18.00','10','https://happycruise.jp/wp-content/uploads/2023/01/valentine2023-sanrio-godiva12.jpg', true),
 	('37','12', 'Peluche de Cinnamoroll con pijama', 'Muñeco de peluche de Cinnamoroll con un pijama azul, juguete coleccionable de Cinnamoroll, regalo de cumpleaños y navidad, 20cm','18.240','20','https://http2.mlstatic.com/D_NQ_NP_880946-MLC69930227264_062023-O.webp', true),
 	('38','12', 'Peluche de Cinnamoroll original', 'Muñeco de peluche de Cinnamoroll, juguete coleccionable de Cinnamoroll, regalo de cumpleaños y navidad, 11cm','10.000','10','https://th.bing.com/th/id/OIP._W14G4-swnEg1fJ9fDLuQAHaHY?pid=ImgDet&w=180&h=180&c=7&dpr=1,3', true),
-	('39','12', 'Peluche de Cinnamoroll (Enamorado)', 'Muñeco de peluche de Cinnamoroll con traje azul y destellos en los ojos, juguete coleccionable de Cinnamoroll, regalo de cumpleaños y navidad, 15cm','18.000','10','https://meccha-japan.com/557634-large_default/plush-cinnamoroll-sanrio-birthday-2024.jpg', true),
+	('39','12', 'Cinnamoroll (Enamorado)', 'Muñeco de peluche de Cinnamoroll con traje azul y destellos en los ojos, juguete coleccionable de Cinnamoroll, regalo de cumpleaños y navidad, 15cm','18.000','10','https://meccha-japan.com/557634-large_default/plush-cinnamoroll-sanrio-birthday-2024.jpg', true),
 	('40','12', 'Peluche de Cinnamoroll (Fresas Season)', 'Muñeco de peluche de Cinnamoroll con traje de colores pasteles y fresas, juguete coleccionable de Cinnamoroll, regalo de cumpleaños y navidad, 20cm','15.500','10','https://i.ebayimg.com/images/g/hJ8AAOSwprNi731R/s-l1600.png', true),
-	('41','12', 'Peluche de Cinnamoroll (20 Aniversario)', 'Muñeco de peluche de Cinnamoroll con traje alusivo al 20 aniversario, juguete coleccionable de Cinnamoroll, regalo de cumpleaños y navidad, 26cm','18.500','10','https://meccha-japan.com/248937-large_default/peluche-kotekikai-cinnamoroll-20th.jpg', true),
+	('41','12', 'Cinnamoroll 20 Aniversario', 'Muñeco de peluche de Cinnamoroll con traje alusivo al 20 aniversario, juguete coleccionable de Cinnamoroll, regalo de cumpleaños y navidad, 26cm','18.500','10','https://meccha-japan.com/248937-large_default/peluche-kotekikai-cinnamoroll-20th.jpg', true),
 	('42','12', 'Peluche de Cinnamoroll (Traje GODIVA 2023)', 'Muñeco de peluche de Cinnamoroll con traje de GODIVA 2023, juguete coleccionable de MyMelody, regalo de cumpleaños y navidad, 22cm','18.00','10','https://happycruise.jp/wp-content/uploads/2023/01/valentine2023-sanrio-godiva12.jpg', true),
 	('43','13', 'Peluche de Kuromi (Traje lila)', 'Muñeco de peluche de Kuromi con traje color lila y detalles rosita, juguete coleccionable de Kuromi, regalo de cumpleaños y navidad, 22cm','19.000','18','https://i.etsystatic.com/10186101/r/il/ec4661/3150024846/il_fullxfull.3150024846_khvt.jpg', true),
 	('44','13', 'Peluche de Kuromi (Traje original)', 'Muñeco de peluche de Kuromi con su traje original, juguete coleccionable de Kuromi, regalo de cumpleaños y navidad, 22cm','16.000','15','https://i.pinimg.com/736x/79/6a/a6/796aa657a7f88e9f109b52b94d43af4e.jpg', true),
@@ -150,9 +169,8 @@ INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('59','13', 'Peluche de Hello Kitty (Enamorada)', 'Muñeco de peluche de Hello Kitty con vestido rosa y destellos en los ojos, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','16.000','21','https://th.bing.com/th/id/R.d087759c84b570e9264ee0482d1fee10?rik=pmyj40Sx92kNaA&riu=http%3a%2f%2fwww.sanrio.com%2fcdn%2fshop%2ffiles%2fzz-2309756237_KT_--1_2000x.jpg%3fv%3d1695702500&ehk=Ee4jyxm%2bzL4E2GPshJIEOpT9TnadKGQ0HgT3FBd3KrU%3d&risl=&pid=ImgRaw&r=0', true),
     ('60','13', 'Peluche de Hello Kitty (Pijama)', 'Muñeco de peluche de Hello Kitty con un pijama rosita, juguete coleccionable de Hello Kitty, regalo de cumpleaños y navidad, 22cm','10.000','21','https://i.pinimg.com/originals/54/f6/02/54f602190af0d8185043267a21ded238.jpg', true);
     
- 
- 
- LOCK TABLES usuario WRITE;
+
+LOCK TABLES usuario WRITE;
 INSERT INTO usuario VALUES
  (1,'Juan','Pérez','juan@example.com','Heredia Centro','juan_perez','$2a$12$04CrX/liDFv9De2pwewjH.V54GWW.4aa/LrZJwetwXn5otlGFPv7.','1111-1111','1234','2030-04-15',2),
  (2,'María','García','maria@example.com','Llanos del Sol','maria_garcia','$2a$12$Iaz69g9rD9tzKO0kaB.V/.UkwIRHMPr9nPU1kCM7jc.9.wkRrx7Yi','2222-2222','5678','2028-04-15',2),
@@ -160,6 +178,34 @@ INSERT INTO usuario VALUES
  (4,'Admin','Admin','admin@example.com','La Aurora','admin','$2a$12$mwkEba3Ge19v4g1dIN3pmuT2oDVyd51NWDHpquHq4wdVeesbcVBBC','4444-4444','1314','2032-04-15',1);
 UNLOCK TABLES;
  
- LOCK TABLES roles WRITE;
+LOCK TABLES roles WRITE;
 INSERT INTO roles VALUES (1,'ROLE_ADMIN'),(2,'ROLE_USER');
 UNLOCK TABLES;
+
+INSERT INTO factura (id_factura,id_usuario,fecha,total,estado) VALUES
+(1,1,'2022-01-05',211560,2),
+(2,2,'2022-01-07',554340,2),
+(3,3,'2022-01-07',871000,2),
+(4,1,'2022-01-15',244140,1),
+(5,2,'2022-01-17',414800,1),
+(6,3,'2022-01-21',420000,1);
+
+INSERT INTO venta (id_venta,id_factura,id_producto,precio,cantidad) values
+(1,1,5,45000,3),
+(2,1,9,15780,2),
+(3,1,10,15000,3),
+(4,2,5,45000,1),
+(5,2,14,154000,3),
+(6,2,9,15780,3),
+(7,3,14,154000,1),
+(8,3,6,57000,1),
+(9,3,15,330000,2),
+(10,1,6,57000,2),
+(11,1,8,27600,3),
+(12,1,9,15780,3),
+(13,2,8,27600,3),
+(14,2,14,154000,2),
+(15,2,3,24000,1),
+(16,3,15,330000,1),
+(17,3,12,45000,1),
+(18,3,10,15000,3);

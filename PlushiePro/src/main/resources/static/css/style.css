@@ -419,7 +419,7 @@ h1{
 
 
 
-/*SecciÃ³n de los productos*/
+/*SecciÃƒÆ’Ã‚Â³n de los productos*/
 
 .wrapper {
   max-width: 1100px;
@@ -521,6 +521,7 @@ img{
     font-weight: 600;
     font-size: 25px;
     margin: 30px 0 5px;
+    margin-left:15px;
     padding-right:90px;
 
 }
@@ -530,6 +531,7 @@ img{
     font-size: 25px;
     margin: 30px 0 5px;
     margin-top:5px;
+   
 
 
 }
@@ -538,6 +540,7 @@ img{
     color: #6A6D78;
     font-size: 13px;
     width: 290px;
+    margin-left:15px;
 }
 
 
@@ -556,7 +559,7 @@ img{
 
 /*Fin de la parte de los productos*/
 
-/*BotÃ³n para agregar al carrito*/
+/*BotÃƒÆ’Ã‚Â³n para agregar al carrito*/
 .btns{
     position: absolute;
     top: 216px;
@@ -568,6 +571,8 @@ img{
     background: transparent;
     border: none;
     margin: 87px;
+    margin-left:150px;
+    margin-bottom:70px;
     font-size: 88px;
     outline: none;
     color: black;
@@ -586,13 +591,13 @@ img{
 .card .btn i {
     font-size: 50px;
     left:100px;
-    top:-40px;
+    top:-75px;
 }
 
 
 .button-container {
     text-align: center; /* Centrar el contenido */
-    margin-top: -40px; /* Ajustar el margen superior segÃºn sea necesario */
+    margin-top: -40px; /* Ajustar el margen superior segÃƒÆ’Ã‚Âºn sea necesario */
 }
 .button-container {
     text-align: center; /* Centrar el contenido */
@@ -716,3 +721,219 @@ input.form-control {
         align-items: baseline;
     }
 
+.details {
+    display: flex;
+    flex-direction: column; /* Para que los elementos estén uno debajo del otro */
+}
+
+.price, .categories {
+    font-size: 16px; /* Mismo tamaño para precio y categoría */
+    margin-bottom:5px;
+}
+
+
+.circle-button-container {
+    position: fixed;
+    top: 27px; 
+    right: 125px; 
+    z-index: 9999; 
+}
+
+.circle-button {
+    width: 20px;
+    height: 20px;
+    font-size:10px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #cdcdcd;
+    border: none;
+    color: black;
+    cursor: pointer;
+}
+.product-card {
+    display: flex;
+    border: 2px solid #E3D9CF;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 400px;
+    margin: auto;
+}
+
+.product-image {
+    flex: 0 0 auto;
+    margin-right: 20px;
+}
+
+.product-image img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 10px;
+}
+
+.product-details {
+    flex: 1 1 auto;
+}
+
+.product-name {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.product-description {
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.product-price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-category {
+    margin-bottom: 10px;
+}
+
+.product-actions {
+    display: flex;
+    align-items: center;
+}
+
+.btn-buy,
+.btn-delete,
+.btn-heart {
+    background-color: #FFC72C;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.btn-buy:hover,
+.btn-delete:hover,
+.btn-heart:hover {
+    background-color: #FFB800;
+}
+
+
+.card-custom {
+    margin-bottom: 20px;
+    height: 200px;
+    max-width: 1000px;
+    margin: 20px auto; 
+}
+
+.card {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2); 
+    border: none; 
+    height: 100%; 
+}
+
+.card-body-custom {
+    display: flex;
+    align-items: center;
+}
+
+.img {
+    width: 120px; 
+    height: auto;
+    margin-right: 20px; 
+}
+
+.card-title-custom {
+    font-size: 15px;
+    margin-bottom: 5px;
+    margin-left:65px;
+    font-weight: normal;
+    margin-right:0px;
+}
+
+.card-text-custom {
+    font-size: 16px; 
+    margin-right:70px;
+    margin-bottom: 10px; 
+    font-weight: bold;
+}
+
+.btn-custom {
+    font-size: 14px; 
+    padding: 5px 10px; 
+    margin-top: auto; 
+}
+
+.card-header {
+    background-color: #f8f9fa; 
+    padding: 20px; 
+}
+
+.card-container-custom {
+    display: flex;
+    flex-direction: column;
+  
+}
+
+
+
+h1 {
+    margin-bottom: 0;
+}
+
+
+.btn-danger-custom {
+    color: Black;
+    border-radius: 5px;
+    padding: 18px 16px;
+    margin-bottom:72px;
+    margin-right:20px;
+    font-size: 30px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+
+.mini-table {
+    margin-top: 20px;
+    margin-left:165px;
+    font-weight:bold;
+   
+}
+
+.mini-table table {
+    width: 12%;
+}
+
+.mini-table table td {
+    padding: 5px 10px;
+}
+
+
+.btn-buy {
+    background-color: #4CAF50; 
+    position:relative;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-left:1070px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    top:-145px;
+}
+
+.btn-buy:hover {
+    background-color: #45a049; 
+}
+
+.text-carrito {
+    text-align: center;
+    font-size: 24px; 
+    margin-top: 20px;
+    color: #555; 
+}

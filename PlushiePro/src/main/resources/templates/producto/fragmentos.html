@@ -10,35 +10,38 @@
     <body>
 
          <!-- Mostrar la informaccion de la entidad producto -->
-      <section th:fragment="listadoProductos" id="productos">
+     <section th:fragment="listadoProductos" id="productos">
     <div class="container">
         <div class="row">
             <div class="col-md-9">
                 <div>
                     <div>
-                        <h1>Recomendaciones</h1>
+                        <h1>Recomendados</h1>
                     </div>
                     <div>
-                        <div class="wrapper">
+                        <div class="wrapper" >            
                             <i id="left" class="fa-solid fa-angle-left"></i>
-                            <ul class="carousel">
-                                <div th:if="${productos != null and !productos.empty}" th:each="producto : ${productos}">
-                                    <li class="card">
-                                        <div class="img"><img th:src="${producto.rutaImagen}" alt="Imagen del producto"/></div>
-                                        <div class="card-body">
-                                            <h2 class="card-text" th:text="'Precio: ' + ${#numbers.formatDecimal(producto.precio, 1, 'DEFAULT', 2, 'DEFAULT')}"></h2>
-                                            <span class="categories" th:text="'Categoría: ' + ${producto.categoria.nombre}"></span>
-                                            <div>
-                                                <button onclick="Toggle2(this)" class="btn"><i class="far fa-heart"></i></button>
+                            <div class="container" >
+                                <ul class="carousel" >
+                                    <div th:if="${productos != null and !productos.empty}" th:each="producto : ${productos}">
+                                        <li class="card">
+                                            <div class="img"><img th:src="${producto.rutaImagen}" alt="Imagen del producto"/></div>
+                                            <div class="card-body">
+                                                <div class="details">
+                                                    <h2 class="card-text" th:text="${producto.nombre}"></h2>
+                                                    <span class="categories" th:text="'Categoría: ' + ${producto.categoria.nombre}"></span>
+                                                    <span class="price" th:text="'Precio: ' + ${#numbers.formatDecimal(producto.precio, 1, 'DEFAULT', 2, 'DEFAULT')}"></span>
+                                                </div>
+                                                <div>
+                                                    <button onclick="Toggle2(this)" class="btn"><i class="far fa-heart"></i></button>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </li>
-                                </div>
-                            </ul>
-                             <i id="right" class="fa-solid fa-angle-right"></i>
-                        </div>
-
-
+                                        </li>
+                                    </div>
+                                </ul>
+                            </div>
+                            <i id="right" class="fa-solid fa-angle-right"></i>
+                        </div>  
                     </div>
                     <div class="text-center p-2" th:if="${productos == null or productos.empty}">
                         <span>No hay productos</span>
@@ -48,7 +51,7 @@
         </div>
     </div>
 </section>
-         
+
       
          
 
