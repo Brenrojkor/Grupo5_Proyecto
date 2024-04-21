@@ -49,12 +49,13 @@ CREATE TABLE usuario (
   nombre varchar(100) NOT NULL,
   apellido varchar(100) NOT NULL,
   correo varchar(100) NOT NULL,
-  direccion varchar(20) NOT NULL,
+  direccion varchar(2048) NOT NULL,
   username varchar(50) NOT NULL,
   password varchar(100) NOT NULL,
   tarjeta varchar(16)  NOT NULL,
   pin varchar(4) NOT NULL,
   fecha DATE NOT NULL,
+  activo boolean,
   id_rol int DEFAULT NULL,
   PRIMARY KEY (id_usuario),
   KEY id_rol (id_rol),
@@ -172,10 +173,10 @@ INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
 
 LOCK TABLES usuario WRITE;
 INSERT INTO usuario VALUES
- (1,'Juan','Pérez','juan@example.com','Heredia Centro','juan_perez','$2a$12$04CrX/liDFv9De2pwewjH.V54GWW.4aa/LrZJwetwXn5otlGFPv7.','1111-1111','1234','2030-04-15',2),
- (2,'María','García','maria@example.com','Llanos del Sol','maria_garcia','$2a$12$Iaz69g9rD9tzKO0kaB.V/.UkwIRHMPr9nPU1kCM7jc.9.wkRrx7Yi','2222-2222','5678','2028-04-15',2),
- (3,'Carlos','López','carlos@example.com','Calle Sánchez','carlos_lopez','$2a$12$stCHKC9z1UJs3rDa2kisfucZnHTXruTuNJwsOILv5bzLOMdc9cRkG','3333-3333','9101','2029-04-15',2),
- (4,'Admin','Admin','admin@example.com','La Aurora','admin','$2a$12$mwkEba3Ge19v4g1dIN3pmuT2oDVyd51NWDHpquHq4wdVeesbcVBBC','4444-4444','1314','2032-04-15',1);
+ (1,'Juan','Pérez','juan@example.com','Heredia Centro','juan_perez','$2a$12$04CrX/liDFv9De2pwewjH.V54GWW.4aa/LrZJwetwXn5otlGFPv7.','1111-1111','1234','2030-04-15',true,2),
+ (2,'María','García','maria@example.com','Llanos del Sol','maria_garcia','$2a$12$Iaz69g9rD9tzKO0kaB.V/.UkwIRHMPr9nPU1kCM7jc.9.wkRrx7Yi','2222-2222','5678','2028-04-15',true,2),
+ (3,'Carlos','López','carlos@example.com','Calle Sánchez','carlos_lopez','$2a$12$stCHKC9z1UJs3rDa2kisfucZnHTXruTuNJwsOILv5bzLOMdc9cRkG','3333-3333','9101','2029-04-15',true,2),
+ (4,'Admin','Admin','admin@example.com','La Aurora','admin','$2a$12$mwkEba3Ge19v4g1dIN3pmuT2oDVyd51NWDHpquHq4wdVeesbcVBBC','4444-4444','1314','2032-04-15',true,1);
 UNLOCK TABLES;
  
 LOCK TABLES roles WRITE;
