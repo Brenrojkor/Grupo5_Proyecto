@@ -9,5 +9,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ProductoDao extends JpaRepository<Producto, Long> {
+        //Ejemplo de método utilizando Métodos de Query
+    public List<Producto> findByNombreOrderByNombre(String nombre);
 
 }

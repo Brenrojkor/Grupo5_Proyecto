@@ -31,8 +31,20 @@ public class ProductoController {
         model.addAttribute("categorias", categorias);
         return "/producto/listado";
     }
-
- 
-             
     
+        @GetMapping("/listado2")
+    public String listado2(Model model) {
+        var productos = productoService.getProductos(false);
+        model.addAttribute("productos", productos);
+        return "/productos/listado2";
+    }
+
+    @PostMapping("/query1")
+    public String consultaQuery1(@RequestParam(value = "nombre") String nombre, Model model) {
+        var productos = productoService.findByNombreOrderByNombre(nombre);
+        model.addAttribute("productos", productos);
+        model.addAttribute("precioInf", nombre);
+        return "/pruebas/listado2";     
+    
+}
 }

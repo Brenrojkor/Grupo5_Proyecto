@@ -20,6 +20,9 @@ public interface ProductoService {
 
     // Se elimina el producto que tiene el id pasado por parámetro
     public void delete(Producto producto);
-
+    
+    // Lista de productos con precio entre ordendados por descripción ConsultaAmpliada
+    public List<Producto> findByNombreOrderByNombre(String nombre);
+  
 
 }
