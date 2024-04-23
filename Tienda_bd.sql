@@ -177,9 +177,10 @@ INSERT INTO categoria (id_categoria, nombre, tipo, activo) VALUES
     ('66','8', 'Peluche de Panda (con Manzanita)', 'Muñeco de peluche de Polar con Manzanita, juguete coleccionable de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','9','https://dojiw2m9tvv09.cloudfront.net/26518/product/X_192135-1600-16009126.jpg?130&time=1713857039', true),
     ('67','9', 'Peluches de Escandalosos', 'Muñecos de peluche de escandalosos, juguetes coleccionables de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','9','https://http2.mlstatic.com/D_NQ_NP_605809-MCO54410964799_032023-O.webp', true),
     ('68','9', 'Peluches de Escandalosos (Apilados)', 'Muñecos de peluche de escandalosos apilados, juguetes coleccionables de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','9','https://http2.mlstatic.com/D_NQ_NP_921822-MLM51330080109_082022-O.webp', true),
-    ('69','9', 'Peluches de Escandalosos (Frutas)', 'Muñecos de peluche de escandalosos frutas, juguetes coleccionables de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','9','https://www.peluchesymas.com/wp-content/uploads/2021/05/as.jpg', true);
-    
-    
+    ('69','9', 'Peluches de Escandalosos (Frutas)', 'Muñecos de peluche de escandalosos frutas, juguetes coleccionables de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','9','https://www.peluchesymas.com/wp-content/uploads/2021/05/as.jpg', true),
+    ('70','10', 'Peluches de Ositos Cariñositos (Gruñosito)', 'Muñeco de peluche de cariñosito, juguetes coleccionables de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','10','https://http2.mlstatic.com/D_NQ_NP_873801-MCO44201264752_112020-O.webp', true),
+    ('71','10', 'Peluches de Ositos Cariñositos (Amorosita)', 'Muñeco de peluche de amorosita, juguetes coleccionables de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','10','https://i.pinimg.com/564x/5e/3a/53/5e3a53fd33cf4c8be5c728c8ef8a079b.jpg', true),
+    ('72','10', 'Peluches de Ositos Cariñositos (Dormilonsito)', 'Muñeco de peluche de dormilonsito, juguetes coleccionables de escandalosos , regalo de cumpleaños y navidad, 22cm','10.000','10','https://m.media-amazon.com/images/I/71HfOYloy+L.SS700.jpg', true);
     
     
 
