@@ -4,6 +4,7 @@
  */
 package com.PlushiePro.PlushiePro.service.impl;
 
+
 import com.PlushiePro.PlushiePro.dao.CategoriaDao;
 import com.PlushiePro.PlushiePro.domain.Categoria;
 import com.PlushiePro.PlushiePro.service.CategoriaService;
@@ -28,6 +29,11 @@ public class CategoriaServiceImpl implements CategoriaService {
         return lista;
     }
     
+     @Override
+    @Transactional(readOnly = true)
+    public Categoria getCategoria(Categoria categoria) {
+        return categoriaDao.findById(categoria.getIdCategoria()).orElse(null);
+    }
 
     
     
