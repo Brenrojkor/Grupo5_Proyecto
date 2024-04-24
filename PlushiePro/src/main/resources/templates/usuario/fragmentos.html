@@ -35,12 +35,26 @@
                             <button class="register">Cerrar sesión</button>
                         </form>
                     </li>
+                    
+                    <li sec:authorize="hasRole('ROLE_USER')">
+
+
+                        <form th:action="@{/factura/listado}">
+                            <button class="register" style="margin-top:20px; margin-left:150px; z-index: 1">
+                                Ver facturas
+                            </button>
+                        </form>
+
+                    </li>
+                    
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
+        
+      
        
     </body>
 </html>

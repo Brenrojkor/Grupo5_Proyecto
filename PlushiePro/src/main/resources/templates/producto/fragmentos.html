@@ -83,6 +83,10 @@
                 <nav class="navbar-second flex">
                 <div class="right flex">
                     <ul>
+                         <li class="login" sec:authorize="hasRole('ROLE_ADMIN')">
+                            <a th:href="@{/venta/listado}">Pedidos</a>
+                            
+                        </li>
                         <li sec:authorize="isAuthenticated()">
                             <a th:href="@{/usuario/listado}">Mi cuenta</a>
                             

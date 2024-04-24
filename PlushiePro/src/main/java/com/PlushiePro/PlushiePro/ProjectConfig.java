@@ -70,7 +70,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/registro/**", "/js/**","/css/**","/images/**", "/webjars/**")
                 .permitAll()
                 .requestMatchers(
-                        "/productos/query1", "/facturar/carrito","/producto/nuevo", "/producto/guardar", "/producto/listado/1",
+                         "/factura/listado","/venta/listado","/productos/query1", "/facturar/carrito","/producto/nuevo", "/producto/guardar", "/producto/listado/1",
                         "/producto/listado/2","/producto/listado/3","/producto/listado/4",
                         "/producto/listado/5", "/producto/listado/6","/producto/listado/7",
                         "/producto/listado/8","/producto/listado/9", "/producto/listado/10",
@@ -94,8 +94,9 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/carrito/listado", "/productos/categoria",
                         "/facturar/carrito"
                 ).hasRole("ADMIN")
-                .requestMatchers("/facturar/carrito")
+                .requestMatchers("/venta/listado")
                 .hasRole("USER")
+                 .requestMatchers("/factura/listado")
                 )
                 .formLogin((form) -> form
                 .loginPage("/login").permitAll())

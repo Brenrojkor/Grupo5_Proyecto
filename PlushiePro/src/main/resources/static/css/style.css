@@ -1057,3 +1057,23 @@ width: 140%;
 .text-products{
     margin: 0 auto;
 }
+
+.custom-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+     margin-bottom:150px;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+   
+}
+
+.custom-table th {
+    background-color: #FADEBD;
+    color: #333;
+}

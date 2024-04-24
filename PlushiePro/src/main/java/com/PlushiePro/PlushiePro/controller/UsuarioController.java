@@ -9,7 +9,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import com.PlushiePro.PlushiePro.domain.Usuario;
+import com.PlushiePro.PlushiePro.domain.Factura;
 import com.PlushiePro.PlushiePro.service.UsuarioService;
+import com.PlushiePro.PlushiePro.service.FacturaService;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
@@ -19,6 +21,9 @@ public class UsuarioController {
     
      @Autowired
     private UsuarioService usuarioService;
+     
+      @Autowired
+    private FacturaService facturaService;
 
    @GetMapping("/listado")
 public String listado(Model model) {
@@ -27,7 +32,8 @@ public String listado(Model model) {
     Usuario usuario = usuarioService.getUsuarioPorUsername(username);
     model.addAttribute("usuario", usuario);
     return "/usuario/listado";
-}
+    }
+
 
     @GetMapping("/nuevo")
     public String usuarioNuevo(Usuario usuario) {
