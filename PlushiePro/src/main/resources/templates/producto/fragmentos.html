@@ -66,15 +66,15 @@
                     </div>
                     <div>
                         <div>
-                                <form th:href="@{/productos/query1}" class="search-bar" method="POST">
-                                <input type="text" name="nombre" placeholder="Buscar"/>
-                                <button type="submit"><i class='bx bx-search'></i></button>
-                            </form>
+                                  <form method="GET" th:action="@{/producto/listado}" class="search-bar" >
+                            <input type="text" name="nombre" placeholder="Buscar" value="" />
+                            <button type="submit"><i class='bx bx-search'></i></button>
+                        </form>
                         </div>
 
                     </div>
                     <div class="cart">
-                        <a th:href="@{carrito/listado}">
+                        <a th:href="@{/carrito/listado}">
                             <img src="\images\carrito.png" alt="Carrito"/>
                         </a>
                     </div>
@@ -84,7 +84,7 @@
                 <div class="right flex">
                     <ul>
                         <li sec:authorize="isAuthenticated()">
-                            <a th:href="@{usuario/listado}">Mi cuenta</a>
+                            <a th:href="@{/usuario/listado}">Mi cuenta</a>
                             
                         </li>
                         <li class="login" sec:authorize="!isAuthenticated()">
@@ -108,7 +108,7 @@
                     <div class="col-md-9">
                         <div>
                             <div>
-                                <h1>Recomendados</h1>
+                                <h1>Productos</h1>
                             </div>
                             <div class="wrapper">
                                 <i id="left" class="fa-solid fa-angle-left"></i>
@@ -141,13 +141,24 @@
                                 </ul>
                                 <i id="right" class="fa-solid fa-angle-right"></i>
                             </div>
-                            <div class="text-center p-2" th:if="${productos == null or productos.empty}">
-                                <span>No hay productos</span>
+                            <div style="text-align: center;" th:if="${productos == null or productos.empty}">
+                                <span >No hay productos</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+        
+        <section th:fragment="listadoProductos" class="bg-light">
+         <div class="row py-2">
+             <div class="col-md-1"></div>
+             <div class="col-md-3">
+                  <form method="POST" th:action="@{/producto/listado}" 
+                       class="was-validated">
+                       </form>
+             </div>
+         </div>
+     </section>
     </body>
 </html>

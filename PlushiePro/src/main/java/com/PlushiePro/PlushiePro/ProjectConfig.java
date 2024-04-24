@@ -70,7 +70,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/registro/**", "/js/**","/css/**","/images/**", "/webjars/**")
                 .permitAll()
                 .requestMatchers(
-                        "/producto/nuevo", "/producto/guardar", "/producto/listado/1",
+                        "/productos/query1", "/facturar/carrito","/producto/nuevo", "/producto/guardar", "/producto/listado/1",
                         "/producto/listado/2","/producto/listado/3","/producto/listado/4",
                         "/producto/listado/5", "/producto/listado/6","/producto/listado/7",
                         "/producto/listado/8","/producto/listado/9", "/producto/listado/10",
@@ -80,28 +80,20 @@ public class ProjectConfig implements WebMvcConfigurer {
                         "/usuario/nuevo", "/usuario/guardar","/usuario/listado",
                         "/usuario/modificar/**","/css/**","/images/**", "/usuario/eliminar/**",
                         "/reportes/**"
-                ).hasRole("ADMIN")
-                .requestMatchers(
-                        "/producto/listado",
-                        "/producto/listado/1",
-                        "/producto/listado/2",
-                        "/producto/listado/3",
-                        "/producto/listado/4",
-                        "/producto/listado/5",
-                        "/producto/listado/6",
-                        "/producto/listado/7",
-                        "/producto/listado/8",
-                        "/producto/listado/9",
-                        "/producto/listado/10",
-                        "/producto/listado/11",
-                        "/producto/listado/12",
-                        "/producto/listado/13",
-                        "/producto/listado/14",
-                        "/producto/listado/15",
-                        "/usuario/listado",
-                        "/carrito/listado",
-                        "/productos/categoria"
                 ).hasAnyRole("ADMIN", "USER")
+                .requestMatchers(
+                        "/productos/query1","/producto/listado",
+                        "/producto/listado/1","/producto/listado/2",
+                        "/producto/listado/3","/producto/listado/4",
+                        "/producto/listado/5","/producto/listado/6",
+                        "/producto/listado/7","/producto/listado/8",
+                        "/producto/listado/9","/producto/listado/10",
+                        "/producto/listado/11","/producto/listado/12",
+                        "/producto/listado/13", "/producto/listado/14",
+                        "/producto/listado/15","/usuario/listado",
+                        "/carrito/listado", "/productos/categoria",
+                        "/facturar/carrito"
+                ).hasRole("ADMIN")
                 .requestMatchers("/facturar/carrito")
                 .hasRole("USER")
                 )

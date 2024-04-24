@@ -76,7 +76,10 @@
                         <div class="card">
                             <div class="card-body-custom">
                                 <div class="img"><img th:src="${item.rutaImagen}" alt="Imagen del producto"/></div>
+                                <div class="title-and-description">
+                                <h2 class="card-title-custom" style="margin-bottom: 10px; font-size:20px; font-weight: bold;">[[${item.nombre}]]</h2>
                                 <h5 class="card-title-custom">[[${item.descripcion}]]</h5>
+                            </div>
                                 <p class="card-text-custom">$[[${item.precio}]]</p>
                                 <a th:href="@{/carrito/eliminar/}+${item.idProducto}" class="btn-custom btn-danger-custom"> <i class='fas fa-trash'></i></a>
                             </div>

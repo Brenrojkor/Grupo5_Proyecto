@@ -1049,3 +1049,11 @@ width: 140%;
     margin-left: 544px; 
     font-size:8px;
 }
+
+.title-and-description {
+    margin-bottom: 10px; 
+}
+
+.text-products{
+    margin: 0 auto;
+}
