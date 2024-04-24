@@ -51,7 +51,13 @@ public class ProductoServiceImpl implements ProductoService {
     @Override
     @Transactional(readOnly = true)
     public List<Producto> findByNombreOrderByNombre(String nombre) {
-        return productoDao.findByNombreOrderByNombre(nombre);
+
+        List<Producto> list = productoDao.findAll();
+
+        list = list.stream().filter(prod -> prod.getNombre().toUpperCase().equals(nombre.toUpperCase())).toList();
+  
+        return list;
+        
     }
     
 

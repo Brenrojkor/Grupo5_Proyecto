@@ -20,6 +20,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import com.PlushiePro.PlushiePro.dao.ProductoDao;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class ItemServiceImpl implements ItemService {
@@ -98,6 +99,7 @@ public class ItemServiceImpl implements ItemService {
     @Autowired
     private ProductoDao productoDao;
 
+    
     @Override
     public void facturar() {
         System.out.println("Facturando");
@@ -134,4 +136,5 @@ public class ItemServiceImpl implements ItemService {
         facturaDao.save(factura);
         listaItems.clear();
     }
+
 }

@@ -65,30 +65,30 @@ public class ProjectConfig implements WebMvcConfigurer {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeHttpRequests((request) -> request
-                .requestMatchers("/", "/index", "/errores/**",
-                        "/carrito/**", "/pruebas/**", "/reportes/**",
-                        "/registro/**", "/js/**","/css/**","/images/**", "/webjars/**")
-                .permitAll()
-                .requestMatchers(
-                        "/producto/nuevo", "/producto/guardar",
-                        "/producto/modificar/**", "/producto/eliminar/**",
-                        "/hotel/nuevo", "/hotel/guardar",
-                        "/hotel/modificar/**", "/hotel/eliminar/**",
-                        "/usuario/nuevo", "/usuario/guardar","/usuario/listado",
-                        "/usuario/modificar/**","/css/**","/images/**", "/usuario/eliminar/**",
-                        "/reportes/**"
-                ).hasRole("ADMIN")
-                .requestMatchers(
-                        "/producto/listado",
-                        "/hotel/listado",
-                        "/usuario/listado",
-                         "/registro"
-                ).hasAnyRole("ADMIN", "USER")
-                .requestMatchers("/facturar/carrito")
-                .hasRole("USER")
-                )
+                        .requestMatchers("/", "/index", "/errores/**","/producto/**",
+                                "/carrito/**", "/pruebas/**", "/reportes/**","/producto/listado",
+                                "/registro/**", "/js/**", "/css/**", "/images/**", "/webjars/**")
+                        .permitAll()
+                        .requestMatchers(
+                                "/producto/nuevo", "/producto/guardar", "/producto/**",
+                                "/producto/modificar/**", "/producto/eliminar/**","/producto/listado",
+                                "/hotel/nuevo", "/hotel/guardar",
+                                "/hotel/modificar/**", "/hotel/eliminar/**",
+                                "/usuario/nuevo", "/usuario/guardar", "/usuario/listado",
+                                "/usuario/modificar/**", "/css/**", "/images/**", "/usuario/eliminar/**",
+                                "/reportes/**")
+                        .hasRole("ADMIN")
+                        .requestMatchers(
+                                "/producto/listado",
+                                "/producto/**",
+                                "/hotel/listado",
+                                "/usuario/listado",
+                                "/registro")
+                        .hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("/facturar/carrito")
+                        .hasRole("USER"))
                 .formLogin((form) -> form
-                .loginPage("/login").permitAll())
+                        .loginPage("/login").permitAll())
                 .logout((logout) -> logout.permitAll());
         return http.build();
     }

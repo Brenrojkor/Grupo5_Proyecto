@@ -55,29 +55,12 @@
          <div class="row py-2">
              <div class="col-md-1"></div>
              <div class="col-md-3">
-                 <form method="POST" th:action="@{/pruebas/query1}" 
+                 <form method="POST" th:action="@{/producto/listado}" 
                        class="was-validated">
-                     <div class="search-bar">                            
-                         <div class="search-bar-body">
-                             <div class="mb-3">
-                                 <label for="nombre">[[#{pruebas.nombre}]]</label>
-                                 <input type="text" class="form-control" 
-                                        th:value="${nombre}"
-                                        th:name="nombre" required="true"/>
-                             </div>
-                         </div>
-                     </div>
                  </form>
              </div>
          </div>
      </section>
-      
-         
-
-
-
-        
-
-        
+  
     </body>
 </html>

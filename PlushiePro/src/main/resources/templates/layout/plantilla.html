@@ -81,10 +81,10 @@
                     </div>
                     <div>
                         <div>
-                                <form th:href="@{/productos/query1}" class="search-bar" method="POST">
-                                <input type="text" name="nombre" placeholder="Buscar"/>
-                                <button type="submit"><i class='bx bx-search'></i></button>
-                            </form>
+                        <form method="GET" th:action="@{/producto/listado}" class="search-bar" >
+                            <input type="text" name="nombre" placeholder="Buscar" value="" />
+                            <button type="submit"><i class='bx bx-search'></i></button>
+                        </form>
                         </div>
 
                     </div>
