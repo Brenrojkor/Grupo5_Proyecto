@@ -104,3 +104,14 @@ function addCard(formulario) {
     $("#resultsBlock").load(url);
 }
 
+function toggleAndAddCard(button) {
+    var isAuthenticated;
+
+    if (!isAuthenticated) {
+        window.alert("Debe iniciar sesión para agregar elementos al carrito.");
+        return;
+    }  
+    Toggle2(button);
+    addCard(button.form);
+}
+

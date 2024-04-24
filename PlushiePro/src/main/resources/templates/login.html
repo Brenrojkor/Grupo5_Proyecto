@@ -48,8 +48,8 @@
                         </form>                            
                     </div>
                 </div>
-                <div th:if="${param.error != null}">
-                    <h3>Error de inicio de sesión. Usuario o contraseña no válidos</h3>
+                <div th:if="${param.error != null}"  class="error-message">
+                    <h3>*Error de inicio de sesión. Usuario o contraseña no válidos*</h3>
                 </div>
             </div>
         </div>           
