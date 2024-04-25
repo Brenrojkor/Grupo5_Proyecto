@@ -1,81 +1,95 @@
+// Selecciona el contenedor y el carrusel
 const wrapper = document.querySelector(".wrapper");
 const carousel = document.querySelector(".carousel");
+
+// Obtiene el ancho de la primera tarjeta en el carrusel
 const firstCardWidth = carousel.querySelector(".card").offsetWidth;
+
+// Selecciona los botones de flecha
 const arrowBtns = document.querySelectorAll(".wrapper i");
+
+// Crea una matriz de los elementos secundarios del carrusel
 const carouselChildrens = [...carousel.children];
 
+// Variables de estado para el arrastre y la reproducción automática
 let isDragging = false, isAutoPlay = true, startX, startScrollLeft, timeoutId;
 
-// Get the number of cards that can fit in the carousel at once
+// Calcula el número de tarjetas que caben en el carrusel a la vez
 let cardPerView = Math.round(carousel.offsetWidth / firstCardWidth);
 
-// Insert copies of the last few cards to beginning of carousel for infinite scrolling
+// Inserta copias de las últimas tarjetas al principio del carrusel para el desplazamiento infinito
 carouselChildrens.slice(-cardPerView).reverse().forEach(card => {
     carousel.insertAdjacentHTML("afterbegin", card.outerHTML);
 });
 
-// Insert copies of the first few cards to end of carousel for infinite scrolling
+// Inserta copias de las primeras tarjetas al final del carrusel para el desplazamiento infinito
 carouselChildrens.slice(0, cardPerView).forEach(card => {
     carousel.insertAdjacentHTML("beforeend", card.outerHTML);
 });
 
-// Scroll the carousel at appropriate postition to hide first few duplicate cards on Firefox
+// Desplaza el carrusel a la posición adecuada para ocultar las primeras tarjetas duplicadas en Firefox
 carousel.classList.add("no-transition");
 carousel.scrollLeft = carousel.offsetWidth;
 carousel.classList.remove("no-transition");
 
-// Add event listeners for the arrow buttons to scroll the carousel left and right
+// Agrega escuchadores de eventos para los botones de flecha para desplazar el carrusel a la izquierda y a la derecha
 arrowBtns.forEach(btn => {
     btn.addEventListener("click", () => {
         carousel.scrollLeft += btn.id === "left" ? -firstCardWidth : firstCardWidth;
     });
 });
 
+// Función para iniciar el arrastre
 const dragStart = (e) => {
     isDragging = true;
     carousel.classList.add("dragging");
-    // Records the initial cursor and scroll position of the carousel
+    // Registra la posición inicial del cursor y del desplazamiento del carrusel
     startX = e.pageX;
     startScrollLeft = carousel.scrollLeft;
 };
 
+// Función para arrastrar
 const dragging = (e) => {
-    if(!isDragging) return; // if isDragging is false return from here
-    // Updates the scroll position of the carousel based on the cursor movement
+    if(!isDragging) return; // Si isDragging es false, retorna desde aquí
+    // Actualiza la posición de desplazamiento del carrusel en función del movimiento del cursor
     carousel.scrollLeft = startScrollLeft - (e.pageX - startX);
 };
 
+// Función para detener el arrastre
 const dragStop = () => {
     isDragging = false;
     carousel.classList.remove("dragging");
 };
 
+// Función para el desplazamiento infinito
 const infiniteScroll = () => {
-    // If the carousel is at the beginning, scroll to the end
+    // Si el carrusel está al principio, desplázate al final
     if(carousel.scrollLeft === 0) {
         carousel.classList.add("no-transition");
         carousel.scrollLeft = carousel.scrollWidth - (2 * carousel.offsetWidth);
         carousel.classList.remove("no-transition");
     }
-    // If the carousel is at the end, scroll to the beginning
+    // Si el carrusel está al final, desplázate al principio
     else if(Math.ceil(carousel.scrollLeft) === carousel.scrollWidth - carousel.offsetWidth) {
         carousel.classList.add("no-transition");
         carousel.scrollLeft = carousel.offsetWidth;
         carousel.classList.remove("no-transition");
     }
 
-    // Clear existing timeout & start autoplay if mouse is not hovering over carousel
+    // Borra el tiempo de espera existente y comienza la reproducción automática si el mouse no está sobre el carrusel
     clearTimeout(timeoutId);
     if(!wrapper.matches(":hover")) autoPlay();
 };
 
+// Función para la reproducción automática
 const autoPlay = () => {
-    if(window.innerWidth < 800 || !isAutoPlay) return; // Return if window is smaller than 800 or isAutoPlay is false
-    // Autoplay the carousel after every 2500 ms
+    if(window.innerWidth < 800 || !isAutoPlay) return; // Retorna si la ventana es menor que 800 o isAutoPlay es false
+    // Reproduce automáticamente el carrusel cada 2500 ms
     timeoutId = setTimeout(() => carousel.scrollLeft += firstCardWidth, 2500);
 };
 autoPlay();
 
+// Event listeners para el arrastre, el desplazamiento infinito y la reproducción automática
 carousel.addEventListener("mousedown", dragStart);
 carousel.addEventListener("mousemove", dragging);
 document.addEventListener("mouseup", dragStop);
@@ -94,9 +108,6 @@ function Toggle2(button){
     }
 }
 
-
-/* La siguiente función se utiliza para activar la cantidad de elementos seleccionados
- * En el carrito de compras utilizando un llamado "ajax" */
 function addCard(formulario) {
     var valor = formulario.elements[0].value;
     var url = '/carrito/agregar';

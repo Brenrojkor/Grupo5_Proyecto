@@ -1045,9 +1045,11 @@ width: 140%;
 
 .error-message {
     color: red;
-    margin-top: 10px; 
-    margin-left: 544px; 
-    font-size:8px;
+    position: absolute; 
+    top: 237px; 
+    left: 544px;
+    font-size: 8px;
+    z-index: 9999; 
 }
 
 .title-and-description {

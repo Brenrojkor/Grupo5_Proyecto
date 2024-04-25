@@ -44,8 +44,6 @@ public class Usuario implements Serializable{
     private String pin;
     @Column(name = "fecha")
     private Date fecha;
-     @Column(name = "activo")
-    private boolean activo;
     @Column(name = "id_rol")
     private int rol;
     
